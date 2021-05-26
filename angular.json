@@ -44,7 +44,6 @@
             "main": "projects/e-admin/src/main.ts",
             "polyfills": "projects/e-admin/src/polyfills.ts",
             "tsConfig": "projects/e-admin/tsconfig.app.json",
-            "aot": true,
             "assets": [
               "projects/e-admin/src/favicon.ico",
               "projects/e-admin/src/assets"
@@ -52,7 +51,13 @@
             "styles": [
               "projects/e-admin/src/styles.sass"
             ],
-            "scripts": []
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -106,7 +111,6 @@
           "options": {
             "main": "projects/e-admin/src/test.ts",
             "polyfills": "projects/e-admin/src/polyfills.ts",
-            "tsConfig": "projects/e-admin/tsconfig.spec.json",
             "karmaConfig": "projects/e-admin/karma.conf.js",
             "assets": [
               "projects/e-admin/src/favicon.ico",
@@ -122,25 +126,11 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/e-admin/tsconfig.app.json",
-              "projects/e-admin/tsconfig.spec.json",
-              "projects/e-admin/e2e/tsconfig.json"
+              "projects/e-admin/tsconfig.app.json"
             ],
             "exclude": [
               "**/node_modules/**"
             ]
-          }
-        },
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "projects/e-admin/e2e/protractor.conf.js",
-            "devServerTarget": "e-admin:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "e-admin:serve:production"
-            }
           }
         }
       }
@@ -186,7 +176,6 @@
             "main": "projects/e-pages/src/main.ts",
             "polyfills": "projects/e-pages/src/polyfills.ts",
             "tsConfig": "projects/e-pages/tsconfig.app.json",
-            "aot": true,
             "assets": [
               "projects/e-pages/src/favicon.ico",
               "projects/e-pages/src/assets"
@@ -194,7 +183,13 @@
             "styles": [
               "projects/e-pages/src/styles.sass"
             ],
-            "scripts": []
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -248,7 +243,6 @@
           "options": {
             "main": "projects/e-pages/src/test.ts",
             "polyfills": "projects/e-pages/src/polyfills.ts",
-            "tsConfig": "projects/e-pages/tsconfig.spec.json",
             "karmaConfig": "projects/e-pages/karma.conf.js",
             "assets": [
               "projects/e-pages/src/favicon.ico",
@@ -264,25 +258,11 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/e-pages/tsconfig.app.json",
-              "projects/e-pages/tsconfig.spec.json",
-              "projects/e-pages/e2e/tsconfig.json"
+              "projects/e-pages/tsconfig.app.json"
             ],
             "exclude": [
               "**/node_modules/**"
             ]
-          }
-        },
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "projects/e-pages/e2e/protractor.conf.js",
-            "devServerTarget": "e-pages:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "e-pages:serve:production"
-            }
           }
         }
       }

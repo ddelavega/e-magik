@@ -1,0 +1,66 @@
+html
+  //height: 100%
+  //height: calc(100vh - 60px)
+  width: 100%
+
+html *
+  // TEST BORDER
+  // border: 1px solid red
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+  // font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
+  &:after, &:before
+    box-sizing: border-box
+
+body
+  height: 100%
+  height: 100vh
+  overflow: hidden !important
+  width: 100%
+  // min-width: 1270px
+
+a, a:hover
+  transition: .3s
+  outline: 0
+  outline-color: transparent
+  text-decoration: none !important
+
+button, button:focus
+  transition: .3s
+  outline: 0 !important
+
+ul, li
+  list-style-type: none
+
+.btn
+  margin: 5px
+  transition: .3s
+
+.btn:hover
+  box-shadow: 0 0 0 0.1rem rgba(#000, 0.2)
+  transition: .3s
+
+.row
+  padding: 0
+  margin: 0
+
+label
+  height: 40px
+  padding: 0 4px
+  line-height: 40px
+
+[class*='col-']
+  float: left
+  padding-right: 20px
+  padding-bottom: 20px
+  &:last-of-type
+    padding-right: 0
+
+// .external-content
+//   min-height: 100%
+
+// @media screen and ( max-width: 400px )
+//   @-ms-viewport
+//     width: 320px !important
+//     max-width: 320px !important

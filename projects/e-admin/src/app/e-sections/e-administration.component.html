@@ -1,0 +1,82 @@
+<div class="card mt-4">
+  <h4 class="card-header">Administrador <span class="small">({{infoUser?.role}})</span></h4>
+  <div class="card-body">
+    <p>e-admin works!</p>
+    <p>This page can be accessed <u>only by AP</u>.</p>
+    <p class="mb-1">All users from secure (adminAP only) api end point:</p>
+    <div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
+    <div class="py-4">
+      <pre>
+        {{infoUser | json}}
+      </pre>
+
+    </div>
+    <div class="d-block">LISTADO USUARIOS AP</div>
+    <ul *ngIf="apAdmin !== null">
+      <li *ngFor="let user of apAdmin">{{ user.name}} {{ user.boRole }} | {{ user.role }} <br>
+        {{user.email}} </li>
+    </ul>
+    <br />
+    <div class="d-block">LISTADO ORGANIZACIONES</div>
+    <ul *ngIf="apUser !== null">
+      <li *ngFor="let user of apUser">{{ user.name}} {{ user.boRole }} | {{ user.role }} <br>
+        {{user.email}} </li>
+    </ul>
+    <br />
+    <div class="d-block">LISTADO TODOS</div>
+    <ul *ngIf="users !== null">
+      <li *ngFor="let user of users">{{ user.name}} {{ user.boRole }} | {{ user.role }} <br>
+        {{user.email}} </li>
+    </ul>
+  </div>
+</div>
+<button (click)="toggleSidebar()">Menu</button>
+
+<div>lorem ipsum dolor sit
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti ex quae saepe molestias officiis? Nam sapiente
+  magnam ut ipsam neque tempora, tempore quisquam optio ullam. Vitae eveniet ab atque? Quis.
+</div><br>
+<div>lorem ipsum dolor sit
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti ex quae saepe molestias officiis? Nam sapiente
+  magnam ut ipsam neque tempora, tempore quisquam optio ullam. Vitae eveniet ab atque? Quis.
+</div><br>
+<div>lorem ipsum dolor sit
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti ex quae saepe molestias officiis? Nam sapiente
+  magnam ut ipsam neque tempora, tempore quisquam optio ullam. Vitae eveniet ab atque? Quis.
+</div><br>
+<div>lorem ipsum dolor sit
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti ex quae saepe molestias officiis? Nam sapiente
+  magnam ut ipsam neque tempora, tempore quisquam optio ullam. Vitae eveniet ab atque? Quis.
+</div><br>
+<div>lorem ipsum dolor sit
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti ex quae saepe molestias officiis? Nam sapiente
+  magnam ut ipsam neque tempora, tempore quisquam optio ullam. Vitae eveniet ab atque? Quis.
+</div><br>
+<div>lorem ipsum dolor sit
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti ex quae saepe molestias officiis? Nam sapiente
+  magnam ut ipsam neque tempora, tempore quisquam optio ullam. Vitae eveniet ab atque? Quis.
+</div><br>
+<div>lorem ipsum dolor sit
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti ex quae saepe molestias officiis? Nam sapiente
+  magnam ut ipsam neque tempora, tempore quisquam optio ullam. Vitae eveniet ab atque? Quis.
+</div><br>
+<div>lorem ipsum dolor sit
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti ex quae saepe molestias officiis? Nam sapiente
+  magnam ut ipsam neque tempora, tempore quisquam optio ullam. Vitae eveniet ab atque? Quis.
+</div><br>
+<div>lorem ipsum dolor sit
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti ex quae saepe molestias officiis? Nam sapiente
+  magnam ut ipsam neque tempora, tempore quisquam optio ullam. Vitae eveniet ab atque? Quis.
+</div><br>
+<div>lorem ipsum dolor sit
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti ex quae saepe molestias officiis? Nam sapiente
+  magnam ut ipsam neque tempora, tempore quisquam optio ullam. Vitae eveniet ab atque? Quis.
+</div><br>
+<div>lorem ipsum dolor sit
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti ex quae saepe molestias officiis? Nam sapiente
+  magnam ut ipsam neque tempora, tempore quisquam optio ullam. Vitae eveniet ab atque? Quis.
+</div><br>
+<div>lorem ipsum dolor sit
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti ex quae saepe molestias officiis? Nam sapiente
+  magnam ut ipsam neque tempora, tempore quisquam optio ullam. Vitae eveniet ab atque? Quis.
+</div><br>

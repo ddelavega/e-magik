@@ -1,0 +1,72 @@
+// Global application theme.
+// Framework overrides and customization goes here.
+
+
+// stylelint-disable-next-line selector-max-universal
+*
+  box-sizing: border-box
+
+html,
+body
+  display: flex
+  flex-direction: column
+  margin: 0
+  height: 100%
+
+a, button, .mat-button
+  outline: 0
+  &:hover
+    background-color: transparent !important
+
+a, a:hover
+  transition: .3s
+  outline: 0
+  outline-color: transparent
+  text-decoration: none !important
+ul, li
+  list-style-type: none
+
+.titulo-detalle
+  font-size: 1.3em
+  color: #0c2769
+  position: relative
+  text-align: left
+  border-bottom: 1px solid #eee
+  line-height: 40px
+  &::after
+    content: ""
+    position: absolute
+    bottom: -3px
+    left: 2px
+    background-color: #63adfb
+    height: 3px
+    width: 42px
+    border-radius: 4px
+
+.small
+  font-size: .8em
+  a
+    font-size: .8em
+
+.f-right
+  float: right
+  line-height: 30px
+  a
+    color: #666
+  .mat-icon
+    vertical-align: middle
+.f-left
+  float: left
+  line-height: 30px
+  a
+    color: #666
+  .mat-icon
+    vertical-align: middle
+
+.custom-container
+  max-width: 1200px
+  // background: yellow
+  margin: 0 auto
+  padding: 0 0 12px
+.off
+  filter: grayscale(100%)

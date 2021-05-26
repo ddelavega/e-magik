@@ -1,0 +1,96 @@
+<!-- <div class="login-circuit">
+  <div class="row row-cols-1 row-cols-md-2">
+    <div class="col illustration-block">foto</div>
+    <div class="col information-block">texto</div>
+  </div>
+</div> -->
+<!-- <div class="container py-4">
+  <div class="card">
+    <h4 class="card-header">Angular {{ ngVersion.full }}</h4>
+    <div class="card-body">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="email">email</label>
+          <input type="text" formControlName="email" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">email is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" formControlName="password" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+          </div>
+        </div>
+        <button [disabled]="loading" class="btn btn-primary">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+          Login
+        </button>
+        <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+      </form>
+      <div class="hide" styles="position: absolute;border: 1px solid red;bottom: 0; left: 0;">
+        <a (click)="prueba('ddelavega@accionpoint.com','123456');">DLV | role: Admin</a><br>
+        <a (click)="prueba('mossola@accionpoint.com','123456');">Florencia | role: Admin</a><br>
+        <a (click)="prueba('sdamonte@accionpoint.com','123456');">SDamonte | role: User</a><br>
+        <br>
+        <br>
+        <a (click)="prueba('superadmin@empresatest.com','123456');">SuperAdmin Org | role: Organizacion</a><br>
+        <a (click)="prueba('jlopez@empresatest.com','123456');">J Lopez Org | role: Empleado</a><br>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="userAuthCircuit">
+  <div class="row row-cols-1 row-cols-md-2">
+    <div class="col mxw-100 alert-info">
+      <div class="hide" styles="position: absolute;border: 1px solid red;bottom: 0; left: 0;">
+        <a (click)="prueba('ddelavega@accionpoint.com','123456');">DLV | role: Admin</a><br>
+        <a (click)="prueba('mossola@accionpoint.com','123456');">Florencia | role: Admin</a><br>
+        <a (click)="prueba('sdamonte@accionpoint.com','123456');">SDamonte | role: User</a><br>
+        <br>
+        <br>
+        <a (click)="prueba('superadmin@empresatest.com','123456');">SuperAdmin Org | role: Organizacion</a><br>
+        <a (click)="prueba('jlopez@empresatest.com','123456');">J Lopez Org | role: Empleado</a><br>
+      </div>
+      <hr class="my-4">
+      <h2>
+        implementación iconografía: <br>
+        <br>
+        <i class="icon ico-ap-logo"></i>
+        <i class="icon ico-angular"></i>
+        <i class="icon ico-gitlab"></i>
+        <i class="icon ico-brain-side"></i>
+      </h2>
+      <p>(Para probar la aplicación en pantalla con el traductor y que no haya malfuncionamiento de la misma)</p>
+      <hr class="my-4">
+    </div>
+    <div class="col alert-warning">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="formLogin">
+        <h2 class="py-3">Login</h2>
+        <div class="row row-cols-1">
+
+          <mat-form-field class="col py-3">
+            <input class="inputsLogin" matInput placeholder="Correo electrónico" formControlName="email" required>
+            <mat-error *ngIf="isFieldInvalid('email')">
+              Por favor ingrese un correo electrónico
+            </mat-error>
+          </mat-form-field> <br>
+          <mat-form-field class="col py-3">
+            <input class="inputsLogin" matInput type="password" placeholder="Contraseña" formControlName="password"
+              required>
+            <mat-error *ngIf="isFieldInvalid('password')">
+              Por favor ingrese una contraseña
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <br>
+        <button mat-raised-button color="primary" type="submit" class="mx-3">Login</button>
+      </form>
+    </div>
+  </div>
+</div>
