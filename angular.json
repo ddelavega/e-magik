@@ -22,9 +22,6 @@
         "@schematics/angular:interceptor": {
           "skipTests": true
         },
-        "@schematics/angular:module": {
-          "skipTests": true
-        },
         "@schematics/angular:pipe": {
           "skipTests": true
         },
@@ -132,6 +129,10 @@
               "**/node_modules/**"
             ]
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
     },
@@ -152,9 +153,6 @@
           "skipTests": true
         },
         "@schematics/angular:interceptor": {
-          "skipTests": true
-        },
-        "@schematics/angular:module": {
           "skipTests": true
         },
         "@schematics/angular:pipe": {

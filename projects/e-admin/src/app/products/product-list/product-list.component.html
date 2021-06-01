@@ -1,0 +1,138 @@
+<!-- <ul *ngIf="products" class="">
+  <li class="text bg-dark text-light px-3 mb-1" *ngFor="let product of products | async">
+    <img class="img-prd my-1 shadow-sm rounded" [src]="product.url" *ngIf="product.url">
+    {{ product.datos.name }} {{ product.datos.otro }} -- {{ product.id }} <button class="btn btn-sm btn-danger" (click)="deleteProduct(product)">Delete</button>
+  </li>
+</ul> -->
+<div class="container-fluid">
+  <h2 class="text-primary text-center">Add</h2>
+  <button class="btn btn-sm btn-warning" routerLink="add">Add Product</button>
+
+  <!-- <div class="row">
+    <ul class="col-12 col-md-10 px-0 mx-auto">
+      <li *ngFor="let product of products | async, let i = index" class="col-12 px-0 mx-0 py-0">
+        <div class="border-bottom py-2 px-2 mx-0 row txtline bg-light">
+          <a routerLink="../product/{{product.id}}" class="col-2 col-md-1 px-0">
+            <img class="img-fluid rounded" [src]="product.datos.xotro" *ngIf="product.datos.xotro.indexOf('.jpg','.png') !== -1">
+            <img class="img-fluid rounded bg-warning" src="../../../assets/images/users/bjjs.png" *ngIf="product.datos.xotro.indexOf('.jpg','.png') == -1" alt="5b72fe9557051.jpg">
+          </a>
+          <div class="col-9 text-truncate">
+            <strong class="px-0 text-truncate">{{ i + 1 }} | {{ product.datos.xname }}</strong><br>
+            <span class="pl-3">{{ product.id }}</span><br>
+            <span class="pl-3">{{ product.datos.xotro }}</span>
+          </div>
+          <div class="dropdown col-1 pt-3 pb-2 px-0 ml-auto text-right">
+            <a class="dropdown-ellipses dropdown-toggle far fa-md fa-ellipsis-v text-center pl-1 pr-2 my-auto" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+            <div class="dropdown-menu dropdown-menu-right py-0 rounded">
+              <a class="dropdown-item mx-0 px-0 pr-1 py-2" routerLink="edit" title="Editar"><i class="far fa-md fa-edit text-left col-3"></i> Editar</a>
+              <hr class="p-0 m-0">
+              <a class="dropdown-item mx-0 px-0 pr-1 py-2 bg-danger text-light" (click)="deleteProduct(product)" title="Eliminar"><i class="far fa-md fa-trash-alt text-left col-3"></i> Eliminar</a>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div> -->
+  <!-- <div class="row">
+    <div *ngFor="let product of products | async" class="gen-card col col-sm-6 col-md-6 col-lg-3 col-xl-3 py-3 mx-auto">
+      <div class="shadow-mt">
+        <a class="imga">
+          <img class="img-fluid" [src]="product.datos.xotro" *ngIf="product.datos.xotro.indexOf('.jpg','.png') !== -1">
+          <img class="img-fluid" src="../../../assets/images/users/bjjs.png" *ngIf="product.datos.xotro.indexOf('.jpg','.png') == -1">
+        </a> -->
+          <!-- <img class="img-fluid" src="https://66.media.tumblr.com/eb526e49171f6f82fb3e6bbefa870ae6/tumblr_oxs8otSScz1ugdugro1_500.jpg" /> -->
+          <!-- <img class="img-fluid" src="https://s-media-cache-ak0.pinimg.com/736x/be/76/06/be7606469734a25eef6be90c7c13f47d.jpg" /> -->
+        <!-- <a class="imga">
+          <img class="img-fluid" [src]="course.uploadedImageUrl ? course.uploadedImageUrl : course.iconUrl" />
+        </a> -->
+        <!-- <h2 class="mb-2">{{product.datos.xname}}</h2>
+        <small class="text-secondary px-2 mb-2">{{product.id}}</small>
+        <p class="eq-p text-truncate ">{{product.datos.xotro}}<br />
+
+        </p>
+        <p class="p-2 text-right"> -->
+          <!-- <button class="btn btn-sm btn-primary" [routerLink]="['/courses', course.url]">
+            VIEW COURSE {{course.seqNo}}
+          </button> -->
+          <!-- <a routerLink="../product/{{product.id}}">Ver</a>
+          <button class="btn btn-sm btn-danger" (click)="deleteProduct(product)">Delete</button> -->
+
+          <!-- <button class="btn btn-sm btn-secondary" (click)="editCourse(course)" data-toggle="modal"
+            data-target="#exampleModal">
+            EDIT
+          </button> -->
+        <!-- </p>
+      </div>
+    </div>
+  </div> -->
+  <hr>
+  <div class="row">
+    <div *ngFor="let product of products | async" class="user-card col col-sm-6 col-md-6 col-lg-3 col-xl-3 py-3 mx-auto">
+      <div class="shadow-mt shadow-brd">
+        <a class="imga">
+          <img class="img-fluid" [src]="product.url">
+
+          <!-- <img class="img-fluid" [src]="product.datos.xotro" *ngIf="product.datos.xotro.indexOf('.jpg','.png') !== -1">
+          <img class="img-fluid" src="../../../assets/images/users/bjjs.png" *ngIf="product.datos.xotro.indexOf('.jpg','.png') == -1"> -->
+        </a>
+          <!-- <img class="img-fluid" src="https://66.media.tumblr.com/eb526e49171f6f82fb3e6bbefa870ae6/tumblr_oxs8otSScz1ugdugro1_500.jpg" /> -->
+          <!-- <img class="img-fluid" src="https://s-media-cache-ak0.pinimg.com/736x/be/76/06/be7606469734a25eef6be90c7c13f47d.jpg" /> -->
+        <!-- <a class="imga">
+          <img class="img-fluid" [src]="course.uploadedImageUrl ? course.uploadedImageUrl : course.iconUrl" />
+        </a> -->
+        <h2 class="mb-2">{{product.datos.xname}}</h2>
+        <small class="text-secondary px-2 mb-2">{{product.id}}</small>
+        <p class="eq-p text-truncate">{{product.datos.xotro}}<br />
+
+        </p>
+        <p class="p-2 text-right">
+          <!-- <button class="btn btn-sm btn-primary" [routerLink]="['/courses', course.url]">
+            VIEW COURSE {{course.seqNo}}
+          </button> -->
+          <button class="btn btn-sm btn-danger" (click)="deleteProduct(product)">Delete</button>
+          <!-- <button class="btn btn-sm btn-danger" (click)="addClassId(product.id)">Clase</button> -->
+
+          <!-- <button class="btn btn-sm btn-secondary" (click)="editCourse(course)" data-toggle="modal"
+            data-target="#exampleModal">
+            EDIT
+          </button> -->
+        </p>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div *ngFor="let product of products | async" class="qr-card col col-sm-6 col-md-6 col-lg-3 col-xl-3 py-3 mx-auto">
+      <div class="shadow-mt">
+
+        <!-- <a class="qra">
+          <qrcode class="qrgen" [qrdata]="product.id" [level]="'Q'" [usesvg]="true"></qrcode>
+        </a> -->
+        <!-- <a class="imga">
+          <img class="img-fluid" [src]="product.datos.xotro" *ngIf="product.datos.xotro"> -->
+
+          <!-- </a> -->
+          <!-- <img class="img-fluid" src="https://66.media.tumblr.com/eb526e49171f6f82fb3e6bbefa870ae6/tumblr_oxs8otSScz1ugdugro1_500.jpg" /> -->
+          <!-- <img class="img-fluid" src="https://s-media-cache-ak0.pinimg.com/736x/be/76/06/be7606469734a25eef6be90c7c13f47d.jpg" /> -->
+        <!-- <a class="imga">
+          <img class="img-fluid" [src]="course.uploadedImageUrl ? course.uploadedImageUrl : course.iconUrl" />
+        </a> -->
+        <h2 class="mb-2">{{product.datos.xname}}</h2>
+        <!-- <small class="text-secondary px-2 mb-2">{{product.id}}</small> -->
+        <p class="px-2 text-right">
+          <!-- <button class="btn btn-sm btn-primary" [routerLink]="['/courses', course.url]">
+            VIEW COURSE {{course.seqNo}}
+          </button> -->
+          <button class="btn btn-sm btn-danger btn-circle" (click)="deleteProduct(product)">
+            <i class="far fa-trash"></i>
+          </button>
+
+          <!-- <button class="btn btn-sm btn-secondary" (click)="editCourse(course)" data-toggle="modal"
+            data-target="#exampleModal">
+            EDIT
+          </button> -->
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "meister-argentina": {
+      "hosting": {
+        "e-admin": [
+          "meister-argentina"
+        ]
+      }
+    }
+  }
+}

@@ -7,6 +7,11 @@ import { AuthModule } from './auth';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialDesignModule } from './material-design';
 
+import { AngularFireModule, FirebaseApp } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+
 import { MAT_RIPPLE_GLOBAL_OPTIONS } from '@angular/material/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptor, JwtInterceptor } from './_helpers';
@@ -14,6 +19,7 @@ import { ErrorInterceptor, JwtInterceptor } from './_helpers';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingComponent } from './landing';
+import { environment } from '../environments';
 
 @NgModule({
   declarations: [
@@ -31,7 +37,12 @@ import { LandingComponent } from './landing';
     HttpClientModule,
     AppRoutingModule,
     AuthModule,
-    SidebarModule.forRoot()
+    SidebarModule.forRoot(),
+    AngularFireAuthModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFirestoreModule.enablePersistence({ synchronizeTabs: true }),
+    AngularFireStorageModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

@@ -14,6 +14,12 @@ const routes: Routes = [
     data: { roles: [RoleBo.Admin] }
   },
   { path: '', component: LandingComponent, canActivate: [AuthGuard] },
+  {
+    path: 'products',
+    loadChildren: () => import('./products/products.module').then(m => m.ProductsModule),
+    canActivate: [AuthGuard],
+    data: { roles: [RoleBo.Admin] }
+  },
   // otherwise redirect to home
   { path: '**', redirectTo: '' }
 ];
