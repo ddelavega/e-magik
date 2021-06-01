@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, VERSION } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { AuthenticationService } from '../../_services';
+import pkg from './../../../../../../package.json';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,8 +13,11 @@ import { AuthenticationService } from '../../_services';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   private formSubmitAttempt: boolean;
+  vers = pkg.version;
+  ngVersion = VERSION;
+  hide = true;
   error = '';
-  isLoading = false;
+  texting: boolean;
   loading = false;
 
   constructor(
@@ -28,21 +33,29 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.fb.group({
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
   }
 
   isFieldInvalid(field: string) {
+    // this.loginForm.get(field).onKeyup() ? this.texting = true : this.texting = false;
     return (
       (!this.loginForm.get(field).valid && this.loginForm.get(field).touched) ||
       (this.loginForm.get(field).untouched && this.formSubmitAttempt)
     );
   }
 
+  isEmailInvalid(field: string) {
+    return (
+      this.loginForm.get(field).errors
+    );
+  }
+
   get f() {
     return this.loginForm.controls;
   }
+
   onSubmit() {
     this.loading = true;
     if (this.loginForm.valid) {
@@ -63,6 +76,7 @@ export class LoginComponent implements OnInit {
     }
     this.formSubmitAttempt = true;
   }
+
   prueba(email: string, password: string) {
     this.authenticationService.login(email, password)
       .pipe(first())

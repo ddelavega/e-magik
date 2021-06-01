@@ -1,5 +1,5 @@
 .userAuthCircuit
-  background-color: red
+  // background-color: red
   padding: 0
   margin: 0
   height: 100%
@@ -8,11 +8,86 @@
   display: grid
 .mxw-100
   max-width: 100%
-
 .formLogin
   width: 100%
-  max-width: 460px
+  max-width: 320px
 .inputsLogin
   width: 100%
-  max-width: 360px !important
+  max-width: 320px
   display: block
+.mat-error
+  line-height: 24px
+.login-illustration
+  max-width: 100%
+  // width: 100%
+  // background: green
+  // border: 3px solid blue
+  background-color: #f1f1f1
+.illustration-block
+  height: 100%
+  height: 100vh
+  display: grid
+  align-items: center
+  img
+    width: 100%
+    max-width: 720px
+.login-info
+  background-color: #fff
+  height: 100%
+  height: 100vh
+  // align-self: center
+  min-width: 420px
+  // max-width: 500px
+  display: block
+  overflow: hidden
+  overflow-y: auto
+.login-block
+  // border: 2px solid green
+  height: 100%
+  height: 100vh
+  // padding: 0
+  // max-height: 600px
+  display: grid
+  align-items: center
+
+.btn-custom
+  border: 0
+  line-height: 40px
+  border-radius: 30px
+  height: 40px
+  width: 100%
+  max-width: 280px
+  background-color: #0C2769
+  color: #fff
+  border: 1px solid #0C2769
+  transition: .3s
+  &:hover
+    border: 1px solid #0C2769
+    color: #0C2769
+    background-color: #fff
+    box-shadow: 0 .2rem .6rem -.2rem rgba(#333, .8)
+  &:disabled
+    border: 2px solid #e0e0e0
+    // box-shadow: 0 .2rem .6rem -.2rem rgba(#333, .8)
+    color: #fff
+    background-color: #e0e0e0 !important
+    box-shadow: 0 0 0 rgba(#000, 0)
+    &:hover, &:active
+      border: 2px solid #e0e0e0
+      background-color: #e0e0e0
+    &:hover
+      background-color: #ff0
+  &:active
+    background-color: rgba(#0C2769, .8)
+    color: #fff
+    border: 2px solid rgba(#0C2769, .8)
+
+.input-icon
+  position: absolute
+  right: 0
+  top: 0
+
+.logo-banner
+  max-width: 320px
+  display: block
+  margin: 0 auto

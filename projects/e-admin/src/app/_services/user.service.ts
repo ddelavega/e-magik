@@ -1,13 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { distinctUntilChanged, map } from 'rxjs/operators';
 
 import { apiApUsuarios, apiAuthInfo } from '../_config/config';
 import { User, UserInfo } from '../_models';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
+
+
+
   constructor(private http: HttpClient) {
     this.http.get<User[]>(`${apiApUsuarios}`);
   }
@@ -20,7 +23,7 @@ export class UserService {
         map((data) => {
           console.log('Usuarios datos devueltos:', data);
           return data;
-        })
+        }), distinctUntilChanged()
       );
   }
 
@@ -30,9 +33,9 @@ export class UserService {
       .get<UserInfo>(apiAuthInfo)
       .pipe(
         map((data) => {
-          console.log('Usuarios datos devueltos:', data);
+          console.log('Usuario info datos devueltos:', data);
           return data;
-        })
+        }), distinctUntilChanged()
       );
   }
 }

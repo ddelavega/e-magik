@@ -1,26 +1,23 @@
-import { AfterViewInit, Component, ElementRef, HostListener, OnInit, VERSION, ViewChild } from '@angular/core';
-import pkg from './../../../../package.json';
+import { Component, ElementRef, HostListener, OnInit, ViewChild, VERSION, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { AuthenticationService, MenuSettingsService } from './_services';
+import pkg from './../../../../package.json';
 import { RoleBo, User } from './_models';
-
+import { AuthenticationService, MenuSettingsService } from './_services';
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.sass']
+  templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit, AfterViewInit {
-  title = 'e-admin';
+  title = 'bo-administrator';
   vers = pkg.version;
   ngVersion = VERSION;
   @ViewChild('searchTermCuit', { static: false }) searchCuit: ElementRef;
   searchBoxCuit!: FormGroup;
   searchTermChanged: Subject<string> = new Subject<string>();
-  currentUser: User;
 
-  // Display Size
+  currentUser: User;
   public screenWidth: any;
   public screenHeight: any;
   // Menu settings
@@ -31,68 +28,56 @@ export class AppComponent implements OnInit, AfterViewInit {
   public menuCloseOnClickOutside = false;
   public menuShowBackdrop = false;
   public menuSidebarClass: string = 'bkgNoShadow';
+  // public iconArrow: string = 'iconArrow';
   public isMobile: boolean;
 
+  mobile;
+  desktop;
   constructor(
     private authenticationService: AuthenticationService,
     private formBuilder: FormBuilder,
     private menuSettings: MenuSettingsService
   ) {
     this.createFormCuit();
+
   }
 
   get isAdmin() {
     return this.currentUser && this.currentUser.boRole === RoleBo.Admin;
   }
 
+  // get isClient() {
+  //   return this.currentUser && this.currentUser.boRole === RoleBo.Client;
+  // }
+
   ngOnInit() {
     this.authenticationService.currentUser.subscribe(x => (this.currentUser = x));
     this.menuSettings.currentOSt.subscribe(status => (this.menuOpened = status));
-    console.log('oninit');
-    this.isMobile = this.screenWidth < this.menuCollapseWidth ? true : false;
-    this.isMobile ? [this.menuMode = 'over', this.menuOpened = false] : [this.menuMode = 'push', this.menuOpened = true];
-    console.log('menuMode', this.menuMode, 'menuOpened', this.menuOpened);
-    console.log('this.screenWidth', this.screenWidth);
-    console.log('this.isMobile', this.isMobile);
-    this.isSideBar();
+    this.configInit(true, 'oninit');
+
+    // this.isSideBar();
   }
 
   @HostListener('window:resize', ['$event'])
 
   onResize(event) {
+    //   this.isMobile ? [this.menuMode = 'slide', this.menuOpened = false] : [this.menuMode = 'push', this.menuOpened = true];
+
+
     this.screenWidth = window.innerWidth;
     this.screenHeight = window.innerHeight;
-    this.isMobile = this.screenWidth < this.menuCollapseWidth ? true : false;
-    this.isMobile ? [this.menuMode = 'over', this.menuOpened = false, this.menuCloseOnClickOutside = true, this.menuShowBackdrop = true] : [this.menuMode = 'push', this.menuOpened = true, this.menuCloseOnClickOutside = false, this.menuShowBackdrop = false];
-    console.log('onresize');
-    console.log('menuMode', this.menuMode, 'menuOpened', this.menuOpened);
-    console.log('this.screenWidth', this.screenWidth);
-    console.log('this.isMobile', this.isMobile);
-    console.log('this.menuCloseOnClickOutside', this.menuCloseOnClickOutside);
-    console.log('this.menuShowBackdrop', this.menuShowBackdrop);
+    this.configInit(false, 'resize');
+    // this.isSideBar();
   }
 
   ngAfterViewInit() {
-    this.isMobile = this.screenWidth < this.menuCollapseWidth ? true : false;
-    this.isMobile ? [this.menuMode = 'over', this.menuOpened = false, this.menuCloseOnClickOutside = true, this.menuShowBackdrop = true] : [this.menuMode = 'push', this.menuOpened = true, this.menuCloseOnClickOutside = false, this.menuShowBackdrop = false];
-    console.log('after');
-    console.log('menuMode', this.menuMode, 'menuOpened', this.menuOpened);
-    console.log('this.screenWidth', this.screenWidth);
-    console.log('this.isMobile', this.isMobile);
-    console.log('this.menuCloseOnClickOutside', this.menuCloseOnClickOutside);
-    console.log('this.menuShowBackdrop', this.menuShowBackdrop);
-    this.isSideBar();
+    this.configInit(false, 'after');
+
   }
 
   logout() {
-    this.isMobile = this.screenWidth < this.menuCollapseWidth ? true : false;
-    this.isMobile ? [this.menuMode = 'over', this.menuOpened = false, this.menuCloseOnClickOutside = true, this.menuShowBackdrop = true] : [this.menuMode = 'push', this.menuOpened = true, this.menuCloseOnClickOutside = false, this.menuShowBackdrop = false];
-    console.log('logout');
-    console.log('menuMode', this.menuMode, 'menuOpened', this.menuOpened);
-    console.log('this.screenWidth', this.screenWidth);
-    console.log('this.isMobile', this.isMobile);
-    console.log('this.menuCloseOnClickOutside', this.menuCloseOnClickOutside);
-    console.log('this.menuShowBackdrop', this.menuShowBackdrop);
+    this.configInit(false, 'logout');
+
     this.authenticationService.logout();
   }
 
@@ -103,12 +88,36 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   public toggleSidebar() {
     this.menuSettings.changeStatusMenu(this.menuOpened);
-    this.isSideBar();
+    // this.isSideBar();
 
   }
 
+  configInit(init, sector) {
+    let onWidth = this.menuSettings.windowRef.innerWidth;
+
+    // console.log('on width', onWidth);
+    this.screenWidth ? this.screenWidth : this.screenWidth = onWidth;
+    console.log('sector', sector); this.isMobile = this.screenWidth < this.menuCollapseWidth ? true : false;
+    if (init) {
+      this.isMobile ? [this.menuMode = 'over', this.menuOpened = false, this.menuCloseOnClickOutside = true, this.menuShowBackdrop = true] : [this.menuMode = 'push', this.menuOpened = true, this.menuCloseOnClickOutside = false, this.menuShowBackdrop = false];
+    } else {
+      this.isMobile ? [this.menuMode = 'over', this.menuOpened = false, this.menuCloseOnClickOutside = true, this.menuShowBackdrop = true] : [this.menuMode = 'push', this.menuOpened = true, this.menuCloseOnClickOutside = false, this.menuShowBackdrop = false];
+    }
+    this.isSideBar();
+
+
+    // console.log('menuMode', this.menuMode, 'menuOpened', this.menuOpened);
+    // console.log('this.screenWidth', this.screenWidth, 'or onwidth', onWidth);
+    // console.log('this.isMobile', this.isMobile);
+    // console.log('this.menuCloseOnClickOutside', this.menuCloseOnClickOutside);
+    // console.log('this.menuShowBackdrop', this.menuShowBackdrop);
+  }
+
   isSideBar() {
+
+    // this.menuSidebarClass = this.menuOpened ? 'bkgShadow' : 'bkgNoShadow';
     this.menuSidebarClass = this.menuOpened ? 'bkgShadow' : 'bkgNoShadow';
+
   }
 
   private createFormCuit(): void {
@@ -128,5 +137,6 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
     this.searchTermChanged.next(event);
   }
+
 
 }

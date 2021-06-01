@@ -34,6 +34,11 @@
                     Administrador
                   </a>
                 </li>
+                <li><a class="nav-item nav-link" routerLinkActive="active" routerLink="/e-admin/organizations"
+                    (click)="isMobile && closeMenu()">
+                    Organizaciones
+                  </a>
+                </li>
                 <li><a class="nav-item nav-link" routerLinkActive="active"
                     routerLink="/e-admin/bitacora-de-servicios" (click)="isMobile && closeMenu()">
                     Bitacora de Servicios
@@ -128,7 +133,7 @@
                   </form>
                 </div>
               </div>
-              <div class="col p-0 text-right">
+              <div class="col p-0 menu-right">
                 <div class="iconAlarm ml-3">
                   <a>
                     <span class="icon-standard">
@@ -146,9 +151,9 @@
                         <img src="{{ image }}" alt="imagen">
                       </ng-container>
                     </span>
-                    <ng-container *ngIf="!isMobile">
-                      <span class="pr-2 text-profile">{{currentUser.email}}</span>
-                    </ng-container>
+                    <!-- <ng-container *ngIf="!isMobile"> -->
+                    <span class="pr-2 text-profile d-none d-md-inline-block">{{currentUser.email}}</span>
+                    <!-- </ng-container> -->
                   </button>
                   <ul aria-labelledby="userLog" class="userLog shadow-sm dropdown-menu dropdown-menu-end">
                     <li>
