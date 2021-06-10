@@ -1,1 +1,104 @@
-<p>product-add works!</p>
+<div class="xxx">
+  <form [formGroup]="productFormGroup" (ngSubmit)="addProduct()" class="row mx-auto">
+
+    <div class="col-5">
+      <div class="form-group">
+        <label for="name" class="label">Name</label>
+        <input class="form-control"
+        type="text"
+        formControlName="name" id="name">
+        <p class="text-danger" *ngIf="name.invalid && !name.pristine">Name is required.</p>
+      </div>
+      <div class="form-group">
+        <label for="apellido" class="label">Apellido</label>
+        <input class="form-control"
+        type="text"
+        formControlName="apellido" id="apellido">
+        <p class="text-danger" *ngIf="apellido.invalid && !apellido.pristine">Name is required.</p>
+      </div>
+      <div class="form-group">
+        <select class="custom-select" formControlName="location">
+          <option value="" selected>Choose location</option>
+          <option *ngFor="let loc of locations" [ngValue]="loc">{{loc}}</option>
+        </select>
+        <div *ngIf="location.invalid && !location.pristine">
+          <p class="text-danger">
+            location should be at least 2 characters.
+          </p>
+        </div>
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="hasDriverLicense"
+        formControlName="hasDriverLicense">
+        <label class="form-check-label" for="hasDriverLicense">Has driver license</label>
+      </div>
+      <div formGroupName="datos">
+        <div class="form-group">
+          <label for="xname" class="label">xName</label>
+          <input class="form-control"
+          type="string"
+          formControlName="xname" id="xname">
+          <div *ngIf="xname.invalid && !xname.pristine">
+            <p class="text-danger" *ngIf="xname.errors.minlength">xname should be at least 2 characters.</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="xotro" class="label">xotro</label>
+          <input class="form-control"
+          type="string"
+          formControlName="xotro" id="xotro">
+          <div *ngIf="xotro.invalid && !xotro.pristine">
+            <p class="text-danger" *ngIf="xotro.errors.minlength">xotro should be at least 2 characters.</p>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-primary d-inline" type="submit" [disabled]="!productFormGroup.valid">Submit</button>
+
+    </div>
+    <div class="col-7">
+     <a class="btn btn-sm btn-primary" (click)="volver()"> Volver</a>
+      <!-- <ng-container *ngIf="imageChangedEvent">
+        <button class="btn btn-sm btn-primary" (click)="cerrar = true;imageChangedEvent = false; croppedImage = '';" > Cerrar</button>
+      </ng-container> -->
+      <ng-container *ngIf="!croppedImage && imageChangedEvent">Loading...</ng-container >
+
+      <ng-container *ngIf="!imageChangedEvent && cerrar == true">
+        <div class="form-group drop-imagen">
+          <label for="imagen" class="label">Arrastra la imagen para subir</label>
+          <input type="file" formControlName="imagen" name="imagen" id="imagen" (change)="uploadFile($event)" accept="image/*">
+          <div *ngIf="imagen.invalid && !imagen.pristine">
+            <p class="text-danger" *ngIf="imagen.errors.minlength">xotro should be at least 2 characters.</p>
+          </div>
+        </div>
+      </ng-container>
+
+      <div class="row">
+        <image-cropper
+        #imageCropper
+        class="col-9 p-1"
+        [imageChangedEvent]="imageChangedEvent"
+        format="png"
+        (imageCropped)="imageCropped($event)"
+        [aspectRatio]="1/1"
+
+        [resizeToWidth]="500"
+        [onlyScaleDown]="true"
+        [cropperMinWidth]="500"
+        (imageCropped)="imageCropped($event)"
+        ></image-cropper>
+        <div class="col-3 p-1">
+<ng-container *ngIf="croppedImage">
+
+  <img [src]="croppedImage" style="width: 200px;height:200px;border-radius: 50%;">
+</ng-container>
+          <!-- <img [src]="croppedImage" *ngIf="croppedImage" style="width: 120px;height:120px;border-radius: 50%;"> -->
+        </div>
+      </div>
+    </div>
+      <!-- <span class="ml-2">{{ status$ | async }}</span> -->
+      <!-- <div>
+        {{ productFormGroup.value | json }}
+      </div> -->
+    </form>
+
+</div>

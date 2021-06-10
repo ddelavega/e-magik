@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, HammerModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidebarModule } from 'ng-sidebar';
 import { AuthModule } from './auth';
@@ -43,6 +43,7 @@ import { environment } from '../environments';
     AngularFirestoreModule,
     AngularFirestoreModule.enablePersistence({ synchronizeTabs: true }),
     AngularFireStorageModule,
+    HammerModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

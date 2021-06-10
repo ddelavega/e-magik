@@ -6,9 +6,13 @@
 // @include angular-material-theme($app-theme)
 @import "./assets/sass/fonts"
 @import "./assets/sass/preloader"
+@import "./assets/sass/generic-card"
 @import "./assets/sass/scrolls"
 @import './assets/sass/apIcons'
-
+$same: #0c2769
+$darker: #0a1d4f
+$altern: #017dbb
+$darkerx: darken($altern, 40%)
 a
   cursor: pointer
 .wrapper
@@ -34,7 +38,7 @@ a
   padding: 0
   h5
     text-align: right
-    background: linear-gradient(to left, rgba(#333, .6), rgba(#0c2769,.6) 100%)
+    background: linear-gradient(to left, rgba($altern, .6), rgba($darkerx,.6) 100%)
     width: 100%
     padding: 30px 20px
   .navbar-nav
@@ -65,7 +69,7 @@ a
     &.active, &:active
       text-shadow: 0 .4rem .6rem rgba(#000, .4)
       color: #fff
-      background: linear-gradient(to right, rgba(#0a1d4f, .6), rgba(#0c2769,.6) 100%)
+      background: linear-gradient(to right, rgba($darkerx, .6), rgba($altern,.6) 100%)
       // background: linear-gradient(to right, rgba(#000, .6), rgba(#0c2769,.6) 0)
       box-shadow: 0 0 1rem rgba(#000, .3)
       padding-left: 30px

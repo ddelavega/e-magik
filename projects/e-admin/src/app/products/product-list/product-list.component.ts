@@ -5,6 +5,7 @@ import { Product } from '../shared/product.model';
 import { tap } from 'rxjs/operators';
 // import { ToastrService } from 'ngx-toastr';
 import { FileService } from '../../files/shared/file-service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -19,6 +20,9 @@ export class ProductListComponent implements OnInit {
   constructor(
     private ps: ProductService,
     private fs: FileService,
+    private router: Router,
+    private activeatedRoute: ActivatedRoute,
+
     // private toastr: ToastrService
   ) {
     // assign a value
@@ -40,7 +44,10 @@ export class ProductListComponent implements OnInit {
         })
       );
   }
-
+  editar(id) {
+    this.router.navigate(['./../edit', id], { relativeTo: this.activeatedRoute });
+    console.log('ID', id);
+  }
   deleteProduct(product: Product) {
     const obs = this.ps.deleteProduct(product.id);
     obs.subscribe(

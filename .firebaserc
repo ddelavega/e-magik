@@ -1,11 +1,6 @@
 {
-  "targets": {
-    "meister-argentina": {
-      "hosting": {
-        "e-admin": [
-          "meister-argentina"
-        ]
-      }
-    }
+  "projects": {
+    "e-magik": "e-magik",
+    "default": "e-magik"
   }
 }

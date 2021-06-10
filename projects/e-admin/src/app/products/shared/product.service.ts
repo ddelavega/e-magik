@@ -49,6 +49,7 @@ export class ProductService {
   // }
 
   getProduct(id: string): Observable<Product> {
+    console.log('enter to get product w/id', id);
     const productsDocuments = this.db.doc<Product>('products/' + id);
     return productsDocuments.snapshotChanges().pipe(
       map(changes => {
@@ -81,7 +82,7 @@ export class ProductService {
               datos: {
                 xname: data.datos.xname,
                 xotro: data.datos.xotro,
-                totalClases: data.datos.totalClases
+                // totalClases: data.datos.totalClases
               }
             };
           });
