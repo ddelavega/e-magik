@@ -29,7 +29,7 @@
                 <li><a class="nav-item nav-link" routerLinkActive="active" routerLink="/"
                     [routerLinkActiveOptions]="{ exact: true }" (click)="isMobile && closeMenu()">Dashboard</a>
                 </li>
-                <li><a class="nav-item nav-link" routerLinkActive="active" routerLink="/e-admin/administrador"
+                <li><a class="nav-item nav-link" routerLinkActive="active" routerLink="/backend/administrador"
                     (click)="isMobile && closeMenu()">
                     Administrador
                   </a>
@@ -48,6 +48,8 @@
                       </a>
                       <ul id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-products"
                         data-bs-parent="#accordionProducts">
+                        <li><a class="nav-item nav-link" routerLinkActive="active" routerLink="/backend/set-productos"
+                            (click)="isMobile && closeMenu()">Set Productos <i class="icon ico-pen"></i></a></li>
                         <li><a class="nav-item nav-link" routerLinkActive="active" routerLink="/products/list" [routerLinkActiveOptions]="{ exact: true }"
                             (click)="isMobile && closeMenu()">List</a></li>
                         <li><a class="nav-item nav-link" routerLinkActive="active" routerLink="/products/add"

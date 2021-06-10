@@ -43,10 +43,48 @@
             "tsConfig": "projects/e-admin/tsconfig.app.json",
             "assets": [
               "projects/e-admin/src/favicon.ico",
-              "projects/e-admin/src/assets"
+              "projects/e-admin/src/assets",
+              {
+                "glob": "**/*.svg",
+                "input": "node_modules/ionicons/dist/ionicons/svg",
+                "output": "./svg"
+              }
             ],
             "styles": [
-              "projects/e-admin/src/styles.sass"
+              "projects/e-admin/src/styles.sass",
+              {
+                "input": "node_modules/@ionic/angular/css/core.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/normalize.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/structure.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/typography.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/display.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/padding.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/float-elements.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/text-alignment.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/text-transformation.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/flex-utils.css"
+              },
+              {
+                "input": "projects/e-admin/src/theme/variables.css"
+              }
             ],
             "scripts": [],
             "vendorChunk": true,
@@ -111,7 +149,12 @@
             "karmaConfig": "projects/e-admin/karma.conf.js",
             "assets": [
               "projects/e-admin/src/favicon.ico",
-              "projects/e-admin/src/assets"
+              "projects/e-admin/src/assets",
+              {
+                "glob": "**/*.svg",
+                "input": "node_modules/ionicons/dist/ionicons/svg",
+                "output": "./svg"
+              }
             ],
             "styles": [
               "projects/e-admin/src/styles.sass"
@@ -133,6 +176,30 @@
         "deploy": {
           "builder": "@angular/fire:deploy",
           "options": {}
+        },
+        "ionic-cordova-serve": {
+          "builder": "@ionic/angular-toolkit:cordova-serve",
+          "options": {
+            "cordovaBuildTarget": "e-admin:ionic-cordova-build",
+            "devServerTarget": "e-admin:serve"
+          },
+          "configurations": {
+            "production": {
+              "cordovaBuildTarget": "e-admin:ionic-cordova-build:production",
+              "devServerTarget": "e-admin:serve:production"
+            }
+          }
+        },
+        "ionic-cordova-build": {
+          "builder": "@ionic/angular-toolkit:cordova-build",
+          "options": {
+            "browserTarget": "e-admin:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "e-admin:build:production"
+            }
+          }
         }
       }
     },

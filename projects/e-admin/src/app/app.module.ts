@@ -20,6 +20,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingComponent } from './landing';
 import { environment } from '../environments';
+import { IonicModule } from '@ionic/angular';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { environment } from '../environments';
     AngularFirestoreModule,
     AngularFirestoreModule.enablePersistence({ synchronizeTabs: true }),
     AngularFireStorageModule,
-    HammerModule
+    HammerModule,
+    IonicModule.forRoot()
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

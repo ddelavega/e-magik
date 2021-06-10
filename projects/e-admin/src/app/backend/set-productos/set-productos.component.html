@@ -1,0 +1,58 @@
+<div class="container">
+  <h2>Datos de Producto</h2>
+  <button class="btn btn-warning d-inline" (click)="nuevoProducto()">Agregar +</button>
+<ng-container *ngIf="isVisible">
+
+  <form [formGroup]="productFormGroup" (ngSubmit)="isEdit ? editarProductoDb() : guardarProducto()" class="row mx-auto">
+    <span (click)="isVisible = false"><i class="icon ico-times"></i></span>
+    <div class="col-5">
+      <div class="form-group">
+        <label for="name" class="label">Nombre</label>
+        <input class="form-control"
+        type="text"
+        formControlName="name" id="name">
+        <p class="text-danger" *ngIf="name.invalid && !name.pristine">Name is required.</p>
+      </div>
+      <div class="form-group">
+        <label for="price" class="label">Precio</label>
+        <input class="form-control"
+        type="number"
+        formControlName="price" id="price">
+        <p class="text-danger" *ngIf="price.invalid && !price.pristine">Name is required.</p>
+      </div>
+      <div class="form-group">
+        <label for="reducedPrice" class="label">Precio reducido</label>
+        <input class="form-control"
+        type="number"
+        formControlName="reducedPrice" id="reducedPrice">
+        <p class="text-danger" *ngIf="reducedPrice.invalid && !reducedPrice.pristine">Name is required.</p>
+      </div>
+
+      <div class="form-group">
+        <label for="picture" class="label">Foto</label>
+        <input class="form-control"
+        type="text"
+        formControlName="picture" id="picture">
+        <p class="text-danger" *ngIf="picture.invalid && !picture.pristine">Name is required.</p>
+      </div>
+
+      <ng-container *ngIf="!isEdit; else editar">
+        <button class="btn btn-{{productFormGroup.valid ? 'primary': 'secondary'}} d-inline" type="submit" [disabled]="!productFormGroup.valid">Guardar</button>
+      </ng-container>
+      <ng-template #editar>
+        <button class="btn btn-{{productFormGroup.valid ? 'primary': 'secondary'}} d-inline" type="submit" [disabled]="!productFormGroup.valid">Editar</button>
+      </ng-template>
+    </div>
+
+
+  </form>
+</ng-container>
+<ul>
+
+  <li *ngFor="let producto of productos">
+    <span>{{producto.name}}</span>
+    <span (click)="editarProducto(producto)"><i class="icon ico-pen"></i></span>
+    <span (click)="borrarProducto(producto)"><i class="icon ico-trash text-danger"></i></span>
+  </li>
+</ul>
+</div>
