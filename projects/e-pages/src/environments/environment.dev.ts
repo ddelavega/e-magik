@@ -9,13 +9,20 @@ export const environment = {
     // storageBucket: 'aladelta-a039bke.appspot.com',
     // messagingSenderId: '684809510706',
     // appId: '1:684809510706:web:e590b4dff0aa7194'
-    apiKey: 'AIzaSyAvzyWXE2fKLh3fI0pz9iACIJRlGL4Ye5E',
-    authDomain: 'meister-argentina.firebaseapp.com',
-    databaseURL: 'https://meister-argentina.firebaseio.com',
-    projectId: 'meister-argentina',
-    storageBucket: 'meister-argentina.appspot.com',
-    messagingSenderId: '272512471346',
-    appId: '1:272512471346:web:e1aa04641b8e6c4cd1872b',
-    measurementId: 'G-JFFNBN5HT8'
+    // apiKey: 'AIzaSyAvzyWXE2fKLh3fI0pz9iACIJRlGL4Ye5E',
+    // authDomain: 'meister-argentina.firebaseapp.com',
+    // databaseURL: 'https://meister-argentina.firebaseio.com',
+    // projectId: 'meister-argentina',
+    // storageBucket: 'meister-argentina.appspot.com',
+    // messagingSenderId: '272512471346',
+    // appId: '1:272512471346:web:e1aa04641b8e6c4cd1872b',
+    // measurementId: 'G-JFFNBN5HT8'
+    apiKey: 'AIzaSyAKCjGmH8OmKg7xLYR0x8TAWooAaIu-Mk4',
+    authDomain: 'e-magik.firebaseapp.com',
+    projectId: 'e-magik',
+    storageBucket: 'e-magik.appspot.com',
+    messagingSenderId: '636395298405',
+    appId: '1:636395298405:web:ccb49724e68ca0a662f08c',
+    measurementId: 'G-8HS7QQQK1R'
   }
 };

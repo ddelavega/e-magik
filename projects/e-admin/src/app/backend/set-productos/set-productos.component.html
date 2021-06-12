@@ -4,7 +4,7 @@
 <ng-container *ngIf="isVisible">
 
   <form [formGroup]="productFormGroup" (ngSubmit)="isEdit ? editarProductoDb() : guardarProducto()" class="row mx-auto">
-    <span (click)="isVisible = false"><i class="icon ico-times"></i></span>
+    <span (click)="isVisible = false; resetForm()"><i class="icon ico-times"></i></span>
     <div class="col-5">
       <div class="form-group">
         <label for="name" class="label">Nombre</label>
@@ -28,13 +28,18 @@
         <p class="text-danger" *ngIf="reducedPrice.invalid && !reducedPrice.pristine">Name is required.</p>
       </div>
 
-      <div class="form-group">
-        <label for="picture" class="label">Foto</label>
-        <input class="form-control"
-        type="text"
-        formControlName="picture" id="picture">
-        <p class="text-danger" *ngIf="picture.invalid && !picture.pristine">Name is required.</p>
-      </div>
+      <label for="foto" class="label">Foto <i class="icon ico-camera"></i></label>
+        <input class="d-none" type="file" accept="image/*" (change)="newImageLoad($event);"
+         id="foto">
+        <!-- <p class="text-danger" *ngIf="foto.invalid && !foto.pristine">Name is required.</p> -->
+      <!-- </div> -->
+      <!-- {{producto.picture}} -
+      {{newProducto.foto}} -
+      [{{newImage}}] x
+      ({{newFile}}) -->
+      <img *ngIf="isEdit && !newProducto.foto ? producto.picture : newProducto.foto" [src]="isEdit && !newProducto.foto ? producto.picture : newProducto.foto" alt="Imagen">
+      {{isEdit && !newProducto.foto ? 'producto.picture' : 'newProducto.foto'}}
+
 
       <ng-container *ngIf="!isEdit; else editar">
         <button class="btn btn-{{productFormGroup.valid ? 'primary': 'secondary'}} d-inline" type="submit" [disabled]="!productFormGroup.valid">Guardar</button>
@@ -47,10 +52,10 @@
 
   </form>
 </ng-container>
-<ul>
+<ul *ngIf="productos">
 
   <li *ngFor="let producto of productos">
-    <span>{{producto.name}}</span>
+    <span> <img  style="max-height: 100px;" *ngIf="producto.picture" [src]="producto.picture" alt="imagen">{{producto.name}}</span>
     <span (click)="editarProducto(producto)"><i class="icon ico-pen"></i></span>
     <span (click)="borrarProducto(producto)"><i class="icon ico-trash text-danger"></i></span>
   </li>

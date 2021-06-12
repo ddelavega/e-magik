@@ -7,7 +7,9 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class FirestoreService {
 
-  constructor(public database: AngularFirestore) {
+  constructor(
+    public database: AngularFirestore
+  ) {
 
   }
 

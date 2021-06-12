@@ -5,7 +5,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first, map } from 'rxjs/operators';
 import { Product } from '../../_models';
-import { FirestoreService } from '../../_services';
+import { FirestorageService, FirestoreService } from '../../_services';
 import { AlertController, LoadingController, ToastController } from '@ionic/angular';
 
 @Component({
@@ -21,6 +21,9 @@ export class SetProductosComponent implements OnInit {
   isEdit = false;
   isVisible = false;
   loading: any;
+  newImage = '';
+  newFile = '';
+  newProducto = { foto: '' };
 
   constructor(
     public alertController: AlertController,
@@ -29,13 +32,14 @@ export class SetProductosComponent implements OnInit {
     private router: Router,
     private activeatedRoute: ActivatedRoute,
     private firestoreService: FirestoreService,
+    private firestorageService: FirestorageService,
 
   ) {
     this.productFormGroup = new FormGroup({
       name: new FormControl('', Validators.required),
       price: new FormControl('', Validators.required),
       reducedPrice: new FormControl('', Validators.required),
-      picture: new FormControl('', Validators.required),
+      // picture: new FormControl(''),
 
     });
   }
@@ -44,31 +48,40 @@ export class SetProductosComponent implements OnInit {
   get name() { return this.productFormGroup.get('name'); }
   get price() { return this.productFormGroup.get('price'); }
   get reducedPrice() { return this.productFormGroup.get('reducedPrice'); }
-  get picture() { return this.productFormGroup.get('picture'); }
-  get imagen() { return this.productFormGroup.get('imagen'); }
+  // get picture() { return this.productFormGroup.get('picture'); }
+  // get imagen() { return this.productFormGroup.get('imagen'); }
 
 
 
   ngOnInit(): void {
     this.getProductos();
   }
-  guardarProducto() {
+  async guardarProducto() {
     this.presentLoading();
-
     this.producto = {
       id: this.firestoreService.getId(),
+      // picture: res,
       fecha: new Date(),
       ...this.productFormGroup.value
     }
     console.log('producto', this.producto);
-    this.firestoreService.createDoc(this.producto, this.path, this.producto.id)
+    console.log('valuse', this.productFormGroup.value);
+    const path = 'productos';
+    const name = this.producto.id;
+    console.log('en guardar', this.producto.name, this.producto.id, this.newFile);
+    let res = await this.firestorageService.uploadImage(this.newFile, path, name);
+    this.producto.picture = res;
+    console.log('despues de pic', this.producto);
+
+    // this.guardarProducto();
+    await this.firestoreService.createDoc(this.producto, this.path, this.producto.id)
       .then(res => {
         this.loading.dismiss();
-        this.presentToast('Guardado con exito');
+        this.presentToast('Guardado con exito!', 'success');
         this.resetForm();
         this.isVisible = false;
       }).catch(err => {
-        this.presentToast('No se ha podido guardar');
+        this.presentToast('No se ha podido guardar', 'danger');
       });
 
 
@@ -76,7 +89,7 @@ export class SetProductosComponent implements OnInit {
 
   getProductos() {
     this.firestoreService.getCollection<Product[]>(this.path)
-      // .pipe(first())
+      // .pipe(first(), map(data => data))
       .subscribe(res => {
         this.productos = res;
         console.log('res', res);
@@ -85,15 +98,13 @@ export class SetProductosComponent implements OnInit {
 
   async borrarProducto(producto: Product) {
     const alert = await this.alertController.create({
-      cssClass: 'normal',
       header: 'Advertencia',
       message: 'Seguro desea eliminar este producto?',
       buttons: [{
         text: 'cancelar',
         role: 'cancel',
-        cssClass: 'normal',
         handler: (bla) => {
-          console.log('Confirm: ' + bla);
+          console.log('Confirm');
         }
       }, {
         text: 'Ok',
@@ -101,10 +112,10 @@ export class SetProductosComponent implements OnInit {
           console.log('Confirm Ok');
           this.firestoreService.deleteDoc(this.path, producto.id).then(res => {
             this.loading.dismiss();
-            this.alertController.dismiss();
-            this.presentToast('Eliminado con exito');
+            // this.alertController.dismiss();
+            this.presentToast('Eliminado con exito', 'danger');
           }).catch(err => {
-            this.presentToast('Ocurrió un error');
+            this.presentToast('Ocurrió un error', 'danger');
           });
         }
 
@@ -114,6 +125,7 @@ export class SetProductosComponent implements OnInit {
   }
 
   editarProducto(producto: Product) {
+    this.resetForm();
     console.log('edit', producto);
     this.productFormGroup.setValue(
       {
@@ -121,7 +133,7 @@ export class SetProductosComponent implements OnInit {
         name: producto.name,
         price: producto.price,
         reducedPrice: producto.reducedPrice,
-        picture: producto.picture,
+        // picture: producto.picture,
       }
     );
     // console.log('productIn', producto);
@@ -130,19 +142,52 @@ export class SetProductosComponent implements OnInit {
     this.isVisible = true;
 
 
+    console.log(this.newProducto);
+
+    if (this.newFile) {
+      console.log('pf1', this.newProducto.foto);
+    } else {
+
+      console.log('pf2', this.newProducto.foto);
+
+    }
   }
-  editarProductoDb() {
+
+
+
+
+  async editarProductoDb() {
+
+
+
+
     this.presentLoading();
 
-    // console.log(this.producto);
+    console.log('en guardar', this.producto.name, this.producto.picture, this.producto.id, this.newFile);
+    if (this.newProducto.foto) {
+      console.log('se borra y sube');
+      // this.firestorageService.deleteImage();
+      console.log('Se agrega');
+      const res = await this.firestorageService.uploadImage(this.newFile, this.path, this.producto.id);
+      this.producto.picture = res;
+    } else {
+      console.log('no Se agrega');
+
+    }
+    let productoAEditar = {
+      ...this.productFormGroup.value,
+      picture: this.producto.picture
+    }
+
+    console.log('this', this.producto, productoAEditar);
     // console.log(this.productFormGroup.value);
-    this.firestoreService.updateDoc(this.productFormGroup.value, this.path, this.producto.id).then(res => {
+    this.firestoreService.updateDoc(productoAEditar, this.path, this.producto.id).then(res => {
       this.loading.dismiss();
-      this.presentToast('Guardado con exito');
+      this.presentToast('Guardado con exito', 'success');
       this.resetForm();
       this.isVisible = false;
     }).catch(err => {
-      this.presentToast('No se ha podido guardar');
+      this.presentToast('No se ha podido guardar', 'danger');
     });
   }
 
@@ -159,18 +204,37 @@ export class SetProductosComponent implements OnInit {
 
   async presentLoading() {
     this.loading = await this.loadingController.create({
-      cssClass: 'normal',
       message: 'guardando'
     });
     await this.loading.present();
   }
 
-  async presentToast(msg: string) {
+  async presentToast(msg: string, color: string) {
     const toast = await this.toastController.create({
       message: msg,
-      cssClass: 'normal',
-      color: 'light',
+      color: color,
       duration: 2000
     });
+    toast.present();
+  }
+
+  async newImageLoad(event: any) {
+    let loadingState = false;
+    if (event.target.files && event.target.files[0]) {
+      loadingState = true;
+      this.newFile = event.target.files[0];
+      const reader = new FileReader();
+      reader.onload = ((image) => {
+        this.newImage = image.target.result as string;
+        this.newProducto.foto = image.target.result as string;
+      });
+      reader.readAsDataURL(event.target.files[0]);
+      // console.log(loadingState, this.isEdit, this.newImage, this.newFile, this.newProducto.foto, event.target.files[0], this.producto.id);
+    }
+    // if(this.isEdit){
+
+    // }
+
+
   }
 }
