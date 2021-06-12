@@ -25,6 +25,7 @@ export class SetProductosComponent implements OnInit {
   newFile = '';
   newProducto = { foto: '' };
 
+
   constructor(
     public alertController: AlertController,
     public loadingController: LoadingController,
@@ -110,12 +111,16 @@ export class SetProductosComponent implements OnInit {
         text: 'Ok',
         handler: () => {
           console.log('Confirm Ok');
+          console.log('producto.picture', producto.picture);
+          this.firestorageService.deleteImage(producto.picture).then(response => {
+            console.log('response', response);
+          });
           this.firestoreService.deleteDoc(this.path, producto.id).then(res => {
             this.loading.dismiss();
             // this.alertController.dismiss();
             this.presentToast('Eliminado con exito', 'danger');
           }).catch(err => {
-            this.presentToast('Ocurrió un error', 'danger');
+            this.presentToast(`Ocurrió un error ${err}`, 'danger');
           });
         }
 
@@ -200,6 +205,7 @@ export class SetProductosComponent implements OnInit {
     this.productFormGroup.markAsUntouched();
     this.productFormGroup.reset();
     this.isEdit = false;
+    this.newProducto.foto = '';
   }
 
   async presentLoading() {

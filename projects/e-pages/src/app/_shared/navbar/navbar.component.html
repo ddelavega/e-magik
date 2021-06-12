@@ -1,0 +1,77 @@
+    <nav class="navbar navbar-expand-lg">
+      <div class="row px-3 mx-0">
+        <div class="col px-0">
+          <h1 class="navbar-marca dlv-logo px-0">
+            <a class="" href="#main">
+              <strong>dlv+</strong><span>designs</span>
+            </a>
+          </h1>
+        </div>
+        <div class="col-2 col-lg-10 px-0 mx-0">
+          <span class="menu-btn d-block d-lg-none text-right ml-auto mr-0">
+            <a>
+              <i class="icon ico-bars" onclick="openNav()"></i>
+            </a>
+          </span>
+          <ul class="navbar-nav d-none d-lg-block text-right px-0 mx-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#profile-start"><span>01</span> Inicio</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdownProfile" data-bs-toggle="dropdown" aria-expanded="false"><span>02</span> Perfil <i class="icon ico-chevron-down"></i>
+              </a>
+              <div id="drop-profile-menu" class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownProfile">
+                <span><a class="dropdown-item" href="#profile-skills">Skills</a></span>
+                <span><a class="dropdown-item" href="#profile-about-me">Acerca de mi</a></span>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdownServices" data-bs-toggle="dropdown" aria-expanded="false"><span>03</span> Servicios <i class="icon ico-chevron-down"></i>
+              </a>
+              <div id="drop-services-menu" class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownServices">
+                <span><a class="dropdown-item" href="#profile-services">Enfoque</a></span>
+                <span><a class="dropdown-item" href="#profile-strategy">Diseño Pymes</a></span>
+                <span><a class="dropdown-item" href="#profile-startups">Soluciones Startups</a></span>
+                <span><a class="dropdown-item" href="#profile-my-work">Mi trabajo</a></span>
+              </div>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#profile-get-in-touch"><span>05</span> Contacto</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdownProfile" data-bs-toggle="dropdown" aria-expanded="false">
+                <ng-container *ngIf="usuario && usuario.photoURL; else otherPic">
+                  <span class="user-avatar">
+                    <img [src]="usuarioPhotoSm" alt="Usuario Pic">
+                  </span>
+                </ng-container>
+                <ng-template #otherPic>
+                  <span *ngIf="usuarioPhotoSm; else smPic"  class="user-avatar">
+                    <img [src]="usuarioPhotoSm" alt="Usuario Pic">
+                  </span>
+                  <!-- <img [src]="usuarioPhotoSm" alt="Usuario Pic"> -->
+                  <ng-template #smPic>
+                    <i class="icon ico-unicorn"></i>
+                  </ng-template>
+
+                </ng-template>
+                <!-- <i class="icon ico-chevron-down"></i> -->
+
+              </a>
+              <div id="drop-profile-menu" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
+                <ng-container *ngIf="usuario; else out">
+                  <span><span class="dropdown-item active">{{(usuario.displayName) ? usuario.displayName : usuario.email}}</span></span>
+
+                  <span><a class="dropdown-item" routerLink="/profile" routerLinkActive="active">Profile</a></span>
+                  <span><a class="dropdown-item" (click)="logout();">Logout</a></span>
+                </ng-container>
+                <ng-template #out>
+                  <span><a class="dropdown-item" routerLink="/sign-in" routerLinkActive="active">Login</a></span>
+                </ng-template>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>

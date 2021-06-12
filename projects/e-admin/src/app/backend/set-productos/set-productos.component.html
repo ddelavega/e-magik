@@ -1,6 +1,6 @@
 <div class="container">
   <h2>Datos de Producto</h2>
-  <button class="btn btn-warning d-inline" (click)="nuevoProducto()">Agregar +</button>
+  <button class="btn btn-warning d-inline" (click)="nuevoProducto()">Agregar + <i class="icon ico-cart"></i></button>
 <ng-container *ngIf="isVisible">
 
   <form [formGroup]="productFormGroup" (ngSubmit)="isEdit ? editarProductoDb() : guardarProducto()" class="row mx-auto">

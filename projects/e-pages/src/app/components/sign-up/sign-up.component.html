@@ -1,0 +1,79 @@
+<div class="row row-cols-1 row-cols-md-2">
+
+      <div class="col order-md-2 profile-pic p-2 p-md-0">
+
+        <img class="img-fluid pic-gray" src="../../../assets/images/users/grogu.png" alt="Profile image">
+        <!-- <img [ngClass]="{'img-fluid pic-gray': usuario.photoURL}" [src]="(usuario.photoURL) ? usuario.photoURL : '/assets/images/users/grogu.png'" alt="Profile image"> -->
+      </div>
+      <div class="col order-md-1 align-texts my-2 my-md-0 bg-number-01">
+        <h2 class="b-right">Sign Up </h2>
+        <form class="container">
+          <div class="d-block">
+            <label for="userName" class="form-label d-block p-3">Email address
+
+              <input type="email" class="form-control" id="userName" aria-describedby="emailHelp" #userName required>
+            </label>
+            <div id="emailHelp" class="form-text px-3">We'll never share your email with anyone else.</div>
+          </div>
+          <div class="d-block">
+            <label for="userPassword" class="form-label d-block p-3">Password
+
+              <input type="password" class="form-control" id="userPassword" #userPassword required>
+            </label>
+          </div>
+          <div class="d-block p-3">
+            <a class="btn-custom-rounded" (click)="signUp(userName.value, userPassword.value)">
+              Sign Up
+            </a> Or
+
+            <a class="btn-custom-rounded" (click)="signUpG();">
+              Continue with Google
+            </a>
+          </div>
+
+
+          <div id="emailHelp" class="form-text px-3">
+            <span>Already have an account? <a class="redirect" routerLink="/sign-in">Log In</a></span>
+          </div>
+        </form>
+
+      </div>
+    </div>
+
+
+<!-- <div class="displayTable">
+  <div class="displayTableCell">
+
+    <div class="authBlock">
+      <h3>Sign Up</h3>
+
+      <div class="formGroup">
+        <input type="email" class="formControl" placeholder="Email Address" #userEmail required>
+      </div>
+
+      <div class="formGroup">
+        <input type="password" class="formControl" placeholder="Password" #userPwd required>
+      </div>
+
+      <div class="formGroup">
+        <input type="button" class="btn btnPrimary" value="Sign Up" (click)="signUp(userEmail.value, userPwd.value)">
+      </div>
+
+      <div class="formGroup">
+        <span class="or"><span class="orInner">Or</span></span>
+      </div>
+
+      <div class="formGroup">
+        <button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()">
+          <i class="fab fa-google-plus-g"></i>
+          Continue with Google
+        </button>
+      </div>
+
+
+    <div class="redirectToLogin">
+      <span>Already have an account? <span class="redirect" routerLink="/sign-in">Log In</span></span>
+    </div>
+  </div>
+
+</div> -->

@@ -1,5 +1,5 @@
 <div class="wrapper">
-  <ng-container *ngIf="currentUser; else login">
+  <ng-container *ngIf="usuario; else login">
 
     <ng-sidebar-container>
       <!-- A sidebar -->
@@ -7,8 +7,8 @@
         [(sidebarClass)]="menuSidebarClass" [(showBackdrop)]="menuShowBackdrop"
         [(closeOnClickOutside)]="menuCloseOnClickOutside" [(keyClose)]="menuKeyClose" [class.bkgShadow]="menuOpened">
         <div
-          class="{{currentUser.boRole && currentUser.role !== 'Admin' ? 'User': 'Admin'}}style menu-sidenav text-light"
-          *ngIf="currentUser">
+          class="Adminstyle menu-sidenav text-light"
+          *ngIf="usuario">
           <div class="sidebarHeader">
             <a class="logo-banner">
               <img src="assets/img/logos/e-magik-logo.svg" alt="Accion Point" />
@@ -18,22 +18,22 @@
             </a>
           </div>
           <nav class="navbar">
-            <h5>{{currentUser?.role}}</h5>
+            <!-- <h5>{{usuario?.email}}</h5> -->
             <div class="navbar-nav">
-              <p class="px-3 py-4">Hola,
+              <!-- <p class="px-3 py-4">Hola,
                 <strong>
-                  {{currentUser?.name}}!
+                  {{usuario?.uid}}!
                 </strong>
-              </p>
+              </p> -->
               <ul>
                 <li><a class="nav-item nav-link" routerLinkActive="active" routerLink="/"
                     [routerLinkActiveOptions]="{ exact: true }" (click)="isMobile && closeMenu()">Dashboard</a>
                 </li>
-                <li><a class="nav-item nav-link" routerLinkActive="active" routerLink="/backend/administrador"
+                <!-- <li><a class="nav-item nav-link" routerLinkActive="active" routerLink="/backend/administrador"
                     (click)="isMobile && closeMenu()">
                     Administrador
                   </a>
-                </li>
+                </li> -->
                 <!-- <li><a class="nav-item nav-link" routerLinkActive="active" routerLink="/products"
                     (click)="isMobile && closeMenu()">
                     Productos
@@ -54,8 +54,6 @@
                             (click)="isMobile && closeMenu()">List</a></li>
                         <li><a class="nav-item nav-link" routerLinkActive="active" routerLink="/products/add"
                             (click)="isMobile && closeMenu()">Add</a></li>
-                        <li><a class="nav-item nav-link" routerLinkActive="active" routerLink="/products/edit"
-                            (click)="isMobile && closeMenu()">Edit</a></li>
                       </ul>
 
 
@@ -142,7 +140,7 @@
       </ng-sidebar>
       <!-- Page content -->
       <div ng-sidebar-content class="main-wrapper">
-        <ng-container *ngIf="currentUser !== null">
+        <ng-container *ngIf="usuario !== null">
           <div class="container-header">
             <div class="row">
               <div class="col-2 p-0 mw-60">
@@ -154,7 +152,7 @@
                   </a>
                 </div>
               </div>
-              <div class="col-3 p-0">
+              <div class="col-3 px-0">
                 <div class="px-1">
                   <form [formGroup]="searchBoxCuit" class="px-0">
                     <input formControlName="searchTermCuit" #searchCuit type="search"
@@ -165,8 +163,9 @@
               <div class="col p-0 menu-right">
                 <div class="iconAlarm ml-3">
                   <a>
+                    <!-- <span class="icon ico-circle-fill"></span> -->
                     <span class="icon-standard">
-                      <i class="icon ico-bell"></i>
+                      <i class="icon ico-cart"></i>
                     </span>
                   </a>
                 </div>
@@ -174,17 +173,23 @@
                   <button class="button-profile" id="userLog" data-bs-toggle="dropdown" aria-expanded="false">
                     <span class="circle-profile">
                       <ng-template #foto>
-                        <img src="assets/img/user/user-profile.svg" />
+                        <img src="assets/images/users/grogu-sm.png" />
                       </ng-template>
-                      <ng-container *ngIf="currentUser?.profilePic as image; else foto">
+                      <ng-container *ngIf="usuario?.photoURL as image; else foto">
                         <img src="{{ image }}" alt="imagen">
                       </ng-container>
                     </span>
                     <!-- <ng-container *ngIf="!isMobile"> -->
-                    <span class="pr-2 text-profile d-none d-md-inline-block">{{currentUser.email}}</span>
+                    <span class="pr-2 text-profile d-none d-md-inline-block">{{usuario.email}}</span>
                     <!-- </ng-container> -->
                   </button>
                   <ul aria-labelledby="userLog" class="userLog shadow-sm dropdown-menu dropdown-menu-end">
+                    <li>
+                      <a class="dropdown-item" routerLinkActive="active" routerLink="/auth/perfil">
+                        <i class="icon ico-user-robot"></i>
+                        <span translate>Perfil</span>
+                      </a>
+                    </li>
                     <li>
                       <button class="dropdown-item" (click)="logout()">
                         <i class="icon ico-logout"></i>

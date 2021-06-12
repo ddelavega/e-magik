@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ProfileComponent } from './profile/profile.component';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 
 const routes: Routes = [
-  {
-    path: 'login',
-    component: LoginComponent,
-    children: [
-      { path: '', component: LoginComponent }
-    ]
-  }
+
+
+  { path: 'sign-in', component: SignInComponent },
+  { path: 'perfil', component: ProfileComponent },
+  { path: 'registrarse', component: SignUpComponent },
+  { path: 'recupero', component: ForgotPasswordComponent }
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

@@ -1,0 +1,104 @@
+// NAVBAR
+.navbar
+  // background-color: #f1f1f1
+  margin: 0
+  padding: 0
+  width: 100%
+  z-index: 1
+  .row
+    width: 100%
+.navbar-marca.dlv-logo
+  // background: yellow
+  height: 80px
+  line-height: 80px
+  margin: 0
+  padding: 0 1rem
+  a
+    display: inline-block
+    margin: 0
+    line-height: 60px
+    // background: red
+    padding: 0
+    @include brand-title(2.2rem, #222)
+    
+.menu-btn
+  // background: red
+  display: inline-block
+  height: 80px
+  width: 80px
+  line-height: 80px
+  // background: blue
+  text-align: right
+  padding: 0 0
+  a
+    // background: pink
+    display: inline-block
+    margin-right: 0
+    // margin: 0 auto
+    text-align: center
+    color: #333
+    width: 60px
+    height: 60px
+    line-height: 60px
+    // font-size: 1.5rem
+    vertical-align: middle
+    // i
+    //   background-color: red
+  &:hover, &:focus
+    color: #000
+.navbar-nav
+  // background: green
+  height: 80px
+  padding: 0
+  .nav-item
+    // background: #000
+    display: inline-block
+    padding: 20px 1rem
+    a.nav-link
+      // background: pink
+      font-size: 1.3rem
+      line-height: 35px
+      // border-bottom: 4px solid transparent
+      display: block
+      padding: 0 0
+      text-transform: lowercase
+      font-weight: 700
+      transition: .3s
+      @extend .navbar-colors
+      font-family: 'Poppins', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+      // span
+      //   font-size: 1.2rem
+      //   font-family: 'Open Sans', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+      //   color: #32b8b8
+      // &:hover
+      //   span
+      //     color: rgba(#111, .6)
+      // &.active
+      //   span
+      //     display: none
+#drop-profile-menu, #drop-works-menu, #drop-services-menu, #drop-modal-menu
+  margin-top: -12px
+  background-color: rgba(#f1f1f1,.6) 
+  border: 0
+  border-right: 3px solid #32b8b8
+  border-radius: 0
+  padding: 0
+  .dropdown-item
+    text-align: right
+    font-weight: 600
+    &:focus, &:hover
+      background-color: rgba(#f1f1f1,0)
+      color: #32b8b8 !important
+    &.active, &:active
+      background-color: rgba(#f1f1f1,0)
+      color: #32b8b8 !important
+.dropdown-menu
+  .dropdown-item
+    &:focus, &:hover
+      background-color: rgba(#32b8b8,.8)
+      color: $semiwite !important
+    &.active, &:active
+      background-color: rgba(#32b8b8,1)
+      color: $semiwite !important
+
+

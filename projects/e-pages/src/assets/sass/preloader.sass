@@ -1,0 +1,39 @@
+// Preloader
+#circle
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  width: 180px
+  height: 180px
+  background-image: url('/assets/img/preloader.png')
+  background-position: center center
+  background-repeat: no-repeat
+  border-radius: 50%
+  // background-color: rgba($blk, .33)
+  // box-shadow: 0 0 6rem rgba($blk, .8)
+.loader
+  // transition: .6s
+  width: calc(100% - 0px)
+  height: calc(100% - 0px)
+  border: 6px solid transparent
+  border-top: 6px solid #4CC8C0
+  border-right: 6px solid rgba(#4CC8C0, 1)
+  // border-bottom: 6px solid rgba(#4CC8C0, 1)
+  border-radius: 50%
+  padding: 6px
+  animation: rotate 3s linear infinite
+
+.loader.onel
+  border-bottom: 6px solid rgba(#4CC8C0, 1)
+.loader.twol
+  animation: reverse rotate 1s linear infinite
+  border: 6px solid transparent
+  border-top: 6px solid #4CC8C0
+  border-right: 6px solid #4CC8C0
+
+
+@keyframes rotate
+  100%
+    transform: rotate(360deg)
+

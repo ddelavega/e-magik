@@ -1,0 +1,221 @@
+// Cards
+.gen-card, .qr-card, .user-card
+  min-width: 280px
+  max-width: 600px
+  padding: 8px
+  // background-color: yellow
+  z-index: 0
+  h2
+    font-size: 1.2em
+    height: 50px
+    line-height: 25px
+  h2,p
+    padding: 8px
+  p
+    // font-family: $font_demo
+    font-weight: 300
+  .eq-p
+    min-height: 120px
+  div
+    border-radius: 6px
+    overflow: hidden
+    background-color: transparent
+    transition: .3s
+  .shadow-mt
+    box-shadow: 0 5px 5px -3px rgba(#222, .3)
+    border-radius: 6px
+    background-color: #f1f1f1
+    // border-bottom: 1px solid rgba(0, 0, 0, .6)
+    // border: 5px solid transparent
+    transition: .3s
+  &:hover
+    .shadow-mt
+      transition: .3s
+      z-index: 3
+      box-shadow: 0 5px 1rem -3px rgba(1, 128, 109, 1)
+      // , 0 8px 10px 1px rgba(0, 0, 0, .14), 0 3px 14px 2px rgba(0, 0, 0, .12)
+      // border-bottom: 1px solid rgba(232, 117,65, .6)
+      // border: 5px solid rgba(1, 128, 109, 0.6)
+.gen-card // horizontal
+  .imga
+    border-radius: 4px 4px 0 0
+    display: block
+    overflow: hidden
+    position: relative
+    padding-top: 56.25%
+    img
+      position: absolute
+      left: 0
+      top: 0
+      width: 100%
+      height: auto
+
+.user-card // square image
+  padding: 12px
+
+  .imga
+    border-radius: 0
+    display: block
+    overflow: hidden
+    img
+      width: 100%
+      height: auto
+  .eq-p
+    min-height: 80px
+  .shadow-mt
+    background-color: #fff
+    border: 4px solid transparent
+    transition: .3s
+    &:hover
+      transition: .3s
+      border: 4px solid #20c3cd
+
+
+.qr-card // square qr
+  .qra
+    border-radius: 4px 4px 0 0
+    display: block
+    overflow: hidden
+    position: relative
+    .qrgen
+      width: 100%
+  .btn-circle
+    border-radius: 20px
+    box-shadow: 0 .3rem .8rem rgba(#222, .3) !important
+  div
+    border-radius: 4px 4px 20px 20px
+
+  // .shadow-sm
+  //   background-color: $wht
+  //   // border-bottom: 5px solid $wht
+  //   box-shadow: 0 .3rem .8rem rgba(#222, .3) !important
+  //   //&:hover, &.active
+  //     // z-index: 3
+  //     // transition: .6s
+  //     // box-shadow: 0 3rem 4rem rgba(#222, 1) !important
+  //     //box-shadow: 0 .3rem 4rem 2.4rem rgba($ngx, .6) !important
+  // &:hover
+  //   z-index: 3
+  //   .shadow-mt
+  //     // background-color: $orng
+  //     // color: #222
+  //     //border-bottom: 0 solid $wht
+  //     transition: .6s
+  //     box-shadow: .8rem .8rem 5rem rgba($bkg, .8) !important
+  //     // box-shadow: 0 .3rem .8rem rgba($ngx, 1) !important
+  //   // font-family: $font_secondary
+  // //margin: 10px auto
+
+
+
+// .is-first
+//   .shadow-mt
+//     border: 2px solid $wht
+//     &:hover
+//       box-shadow: 0 .3rem .4rem rgba($ins, .4) !important
+//       border: 2px solid $ins
+.info-card // square image
+  text-align: center
+  h3
+    font-size: 1.2em
+  .icons
+    border-radius: 0
+    display: block
+    overflow: hidden
+    img
+      width: 40%
+      min-width: 60px
+      min-height: 60px
+      height: auto
+.panel-card // square image
+  text-align: center
+  padding: 12px
+  min-width: 150px
+  .h3
+    font-size: 1.8em
+    font-weight: 900
+  .icons
+    border-radius: 0
+    display: block
+    overflow: hidden
+    img
+      width: 40%
+      min-width: 60px
+      min-height: 60px
+      height: auto
+  .shadow-mt
+    background-color: #fff
+    border: 4px solid rgba(#000, 1)
+    border-radius: 6px
+    transition: .3s
+    padding: 0
+    margin: 0
+    opacity: .6
+    a
+      display: block
+      padding: 0
+      margin: 0
+    .h3,strong,span
+      display: block
+      color: rgba(#000, 1)
+      // background: green
+      margin: 0
+      padding: 8px
+
+    .eq-p
+      min-height: 72px
+    &:hover
+      // background-color: #ffc107
+      opacity: 1
+      border: 4px solid #000
+      box-shadow: 0 5px .8rem -3px rgba(#333, 1)
+      .h3,strong,span
+        color: rgba(#000, 1)
+.footer-card // square image
+  text-align: left
+  h3
+    font-size: 1.3em
+  .icons
+    border-radius: 0
+    display: block
+    overflow: hidden
+    img
+      width: 40%
+      min-width: 60px
+      min-height: 60px
+      height: auto
+
+
+.container-panel
+  max-width: 800px
+  margin: 10px auto
+.container-info
+  max-width: 800px
+  box-shadow: 0 5px 1rem -3px rgba(#20c3cd, 1)
+  border-radius: 4px
+
+@media all and (max-width: 740px)
+
+  .container-info
+    box-shadow: 0 0 0 0 rgba(#20c3cd, 0)
+    border-radius: 0
+  .info-card // square image
+    padding: 4px
+    text-align: center
+    h3
+      font-size: 1em
+@media all and (max-width: 320px)
+  .panel-card // square image
+    text-align: center
+    padding: 8px
+    min-width: 150px
+    .h3
+      font-size: 1.2em
+      color: red
+      min-height: 72px
+    .icons
+      padding-bottom: 0 !important
+      img
+        width: 100%
+    .eq-p.text-truncate
+      display: none

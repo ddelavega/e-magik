@@ -1,0 +1,59 @@
+<ng-template #showlogin>
+  <div *ngIf="cargando"> Cargando...</div>
+  <!-- <app-sign-in *ngIf="!cargando" ></app-sign-in> -->
+</ng-template>
+
+
+<div class="container-fluid container-xl profile-gen" id="profile-gen">
+<ng-container *ngIf="usuario && !cargando; else showlogin">
+    <div class="row row-cols-1 row-cols-md-2">
+
+      <div class="col order-md-2 profile-pic p-2 p-md-0">
+
+        <img class="img-fluid pic-gray" [src]="usuarioPhoto" alt="Profile image">
+        <!-- <img [ngClass]="{'img-fluid pic-gray': usuario.photoURL}" [src]="(usuario.photoURL) ? usuario.photoURL : '/assets/images/users/grogu.png'" alt="Profile image"> -->
+      </div>
+      <div class="col order-md-1 align-texts my-2 my-md-0 bg-number-01">
+        <h2 class="b-right">Hello: <strong>{{(usuario.displayName) ? usuario.displayName : usuario.email}}</strong></h2>
+        <p>User ID: <strong>{{usuario.uid}}</strong></p>
+        <p>Email: <strong>{{usuario.email}}</strong></p>
+        <p>Email Verified: <strong>{{usuario.emailVerified}}</strong></p>
+      </div>
+    </div>
+  </ng-container>
+  </div>
+         <!-- <ng-template #showlogin>
+            <div *ngIf="cargando"> Cargando...</div>
+            <app-sign-in *ngIf="!cargando" ></app-sign-in>
+          </ng-template>
+        <div class="row" *ngIf="usuario && !cargando; else showlogin">
+            <nav class="col-md-2 d-md-block bg-light sidebar">
+      <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active">
+              <i class="fas fa-user"></i>User Profile
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="authService.SignOut()">
+              <i class="fas fa-sign-out-alt"></i>Log out
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+          <div class="col-md-12">
+
+            <div class="media">
+              <img class="align-self-start mr-5 img-thumbnail rounded-circle" src="{{(usuario.photoURL) ? usuario.photoURL : '/assets/images/users/grogu.png'}}"
+                alt="{{usuario.displayName}}">
+              <div class="media-body">
+                <h1>Hello: <strong>{{(usuario.displayName) ? usuario.displayName : usuario.email}}</strong></h1>
+                <p>User ID: <strong>{{usuario.uid}}</strong></p>
+                <p>Email: <strong>{{usuario.email}}</strong></p>
+                <p>Email Verified: <strong>{{usuario.emailVerified}}</strong></p>
+              </div>
+            </div>
+          </div>
+        </div> -->

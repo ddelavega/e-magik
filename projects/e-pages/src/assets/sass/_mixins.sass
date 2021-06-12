@@ -1,0 +1,23 @@
+// MIXINS
+@mixin brand-title($size, $color)
+  strong, span
+    padding: 0
+    vertical-align: middle
+  strong
+    font-family: 'Poppins', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+    font-weight: 700
+    font-size: $size
+    color: rgba($color, 1)
+  span
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif
+    font-weight: 300
+    font-size: $size - .9
+    color: rgba($color, .6)
+
+@mixin profile--titles($size)
+  h2
+    font-size: $size
+    color: #333
+  h3
+    color: #666
+    font-size: $size - 0.6 

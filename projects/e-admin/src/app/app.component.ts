@@ -3,8 +3,10 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import pkg from './../../../../package.json';
-import { RoleBo, User } from './_models';
-import { AuthenticationService, MenuSettingsService } from './_services';
+import { AuthService } from './shared/services';
+import { User } from './shared/services/user';
+// import { RoleBo, User } from './_models';
+import { MenuSettingsService } from './_services';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html'
@@ -17,7 +19,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   searchBoxCuit!: FormGroup;
   searchTermChanged: Subject<string> = new Subject<string>();
 
-  currentUser: User;
   public screenWidth: any;
   public screenHeight: any;
   // Menu settings
@@ -33,17 +34,34 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   mobile;
   desktop;
+
+
+  usuario: User;
+  cargando: boolean = true;
+
+
+
+
+
+
   constructor(
-    private authenticationService: AuthenticationService,
+    public authService: AuthService,
     private formBuilder: FormBuilder,
     private menuSettings: MenuSettingsService
   ) {
+    console.log('authService.afAuth.user', this.authService.afAuth.user);
+    this.authService.afAuth.user.subscribe((usuario) => {
+
+      console.log('usuario', usuario);
+      this.usuario = usuario;
+      this.cargando = false;
+    });
     this.createFormCuit();
 
   }
 
   get isAdmin() {
-    return this.currentUser && this.currentUser.boRole === RoleBo.Admin;
+    return this.usuario && this.usuario.emailVerified;
   }
 
   // get isClient() {
@@ -51,7 +69,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   // }
 
   ngOnInit() {
-    this.authenticationService.currentUser.subscribe(x => (this.currentUser = x));
+    // this.authenticationService.currentUser.subscribe(x => (this.currentUser = x));
     this.menuSettings.currentOSt.subscribe(status => (this.menuOpened = status));
     this.configInit(true, 'oninit');
 
@@ -78,7 +96,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   logout() {
     this.configInit(false, 'logout');
 
-    this.authenticationService.logout();
+    this.authService.SignOut();
   }
 
   public closeMenu() {

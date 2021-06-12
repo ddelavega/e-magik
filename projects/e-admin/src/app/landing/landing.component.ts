@@ -1,6 +1,7 @@
 import { Component, OnInit, VERSION, } from '@angular/core';
+import { AuthService } from '../shared/services';
 import { User } from '../_models';
-import { AuthenticationService, UserService } from '../_services';
+import { UserService } from '../_services';
 
 @Component({
   selector: 'app-landing',
@@ -10,12 +11,13 @@ import { AuthenticationService, UserService } from '../_services';
 export class LandingComponent implements OnInit {
   ngVersion = VERSION;
 
-  loading = false;
-  user: User;
-  userFromApi: User;
+  // loading = false;
+  // user: User;
+  // userFromApi: User;
 
-  constructor(private userService: UserService, private authenticationService: AuthenticationService) {
-    this.user = this.authenticationService.userValue;
+  constructor(
+  ) {
+    // this.user = this.authService..userValue;
   }
 
   ngOnInit(): void {

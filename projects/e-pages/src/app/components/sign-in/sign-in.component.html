@@ -1,0 +1,44 @@
+<div class="row row-cols-1 row-cols-md-2">
+
+      <div class="col order-md-2 profile-pic p-2 p-md-0">
+
+        <img class="img-fluid pic-gray" src="../../../assets/images/users/grogu.png" alt="Profile image">
+        <!-- <img [ngClass]="{'img-fluid pic-gray': usuario.photoURL}" [src]="(usuario.photoURL) ? usuario.photoURL : '/assets/images/users/grogu.png'" alt="Profile image"> -->
+      </div>
+      <div class="col order-md-1 align-texts my-2 my-md-0 bg-number-01">
+        <h2 class="b-right">Login </h2>
+        <form class="container">
+          <div class="d-block">
+            <label for="userName" class="form-label d-block p-3">Email address
+
+              <input type="email" class="form-control" id="userName" aria-describedby="emailHelp" #userName required>
+            </label>
+            <div id="emailHelp" class="form-text px-3">We'll never share your email with anyone else.</div>
+          </div>
+          <div class="d-block">
+            <label for="userPassword" class="form-label d-block p-3">Password
+
+              <input type="password" class="form-control" id="userPassword" #userPassword required>
+            </label>
+          </div>
+          <div class="d-block p-3">
+            <a class="btn-custom-rounded" (click)="login(userName.value, userPassword.value)">
+              Log In
+            </a> Or
+
+            <a class="btn-custom-rounded" (click)="loginG();">
+              Log in with Google
+            </a>
+          </div>
+
+
+          <div id="emailHelp" class="form-text px-3">
+            <a routerLink="/forgot-password">Forgot Password?</a>.
+            <br>
+            <span>Don't have an account?<a class="redirect" routerLink="/register-user"> Sign Up</a></span>
+          </div>
+        </form>
+
+      </div>
+    </div>
+

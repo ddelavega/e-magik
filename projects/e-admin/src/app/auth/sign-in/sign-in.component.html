@@ -1,0 +1,57 @@
+
+<div class="col-12 col-md-4 col-xl-3 p-0 login-info mx-auto">
+  <div class="login-block">
+    <div class="login-container">
+      <div class="logo-banner">
+        <h1 class="py-0">e-Shop </h1><br>
+      </div>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="formLogin mx-auto py-4">
+        <div class="row row-cols-1 py-4">
+          <mat-form-field class="col py-3 d-block">
+            <input class="inputsLogin" matInput placeholder="Correo electrónico" formControlName="email"
+              autocomplete="email" required autocomplete="off" (focus)="error = ''">
+            <mat-error *ngIf="isFieldInvalid('email')">
+              Por favor ingrese un correo electrónico
+            </mat-error>
+            <mat-error *ngIf="isEmailInvalid('email')">
+              Por favor ingrese un correo válido
+            </mat-error>
+          </mat-form-field> <br>
+          <mat-form-field class="col py-3 d-block">
+            <input class="inputsLogin" matInput type="password" placeholder="Contraseña" formControlName="password"
+              autocomplete="password" [type]="hide ? 'password' : 'text'" required autocomplete="off"
+              (focus)="error = ''">
+            <i class="input-icon icon ico-{{ hide ? 'eye' : 'eye-shut' }}" *ngIf="loginForm.controls.password.value"
+              (click)="hide = !hide"></i>
+            <mat-error *ngIf="isFieldInvalid('password')">
+              Por favor ingrese una contraseña
+            </mat-error>
+          </mat-form-field>
+          <div class="col py-3 d-block">
+            <mat-error [hidden]="!error || loading">
+              Usuario o contraseña incorrectos.
+            </mat-error>
+          </div>
+        </div>
+        <br>
+        <button type="submit" class="btn-custom mx-3" [disabled]="loginForm.invalid || loading">Iniciar Sesión {{texting}}
+          <span *ngIf="loading && !error && !loginForm.invalid"
+            class="spinner-border spinner-border-sm mr-1"></span>
+        </button>
+      </form>
+      <div class="text-center py-2">
+        <div id="emailHelp" class="form-text px-3">
+          <a routerLink="/recupero">Olvidaste la contraseña?</a>.
+          <br>
+          <span>No tenés cuenta? <a class="redirect" routerLink="/registrarse">Registrate</a></span>
+        </div>
+        <p class="small">
+          Angular {{ ngVersion.full }} | Vers. {{vers}}
+          <br>
+          <br>
+          <span class="small">by e-magik</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

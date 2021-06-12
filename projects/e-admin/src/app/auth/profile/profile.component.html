@@ -1,0 +1,28 @@
+<ng-template #showlogin>
+  <div *ngIf="cargando"> Cargando...</div>
+</ng-template>
+<div class="container-fluid container-xl profile-gen" id="profile-gen">
+<ng-container *ngIf="usuario && !cargando; else showlogin">
+    <div class="row row-cols-1 row-cols-md-2">
+
+      <div class="col order-md-2 profile-pic p-2 p-md-0">
+        <img class="img-fluid pic-gray" [src]="usuarioPhoto" alt="Profile image">
+      </div>
+      <div class="col order-md-1 align-texts my-2 my-md-0">
+        <h2 class="b-right"><strong>Perfil</strong></h2>
+        <h3 class="b-right"><strong>{{(usuario.displayName) ? usuario.displayName : usuario.email}}</strong></h3>
+        <p>User ID: <strong>{{usuario.uid}}</strong></p>
+        <p>Email: <strong>{{usuario.email}}</strong></p>
+        <p>Verificado: <strong class="text-{{usuario.emailVerified ? 'success' : 'danger'}}"><i class="icon ico-{{usuario.emailVerified ? 'check' : 'times'}}"></i></strong></p>
+        <p class="alert-info p-2">
+          <span class="small">
+            Necesitas completar tus datos para utilizar opciones avanzadas.
+            <br>
+            Recuerda que solo tú puedes ver esta información.
+          </span>
+        </p>
+      </div>
+    </div>
+  </ng-container>
+  </div>
+

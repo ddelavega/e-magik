@@ -1,1 +1,621 @@
-/* You can add global styles to this file, and also import other style files */
+@import "./assets/sass/bs/bootstrap"
+// @import "./assets/sass/bodyreset"
+// @import "./assets/sass/custom-theme"
+// @import "./assets/sass/theme-variables"
+// @include mat-core()
+// @include angular-material-theme($app-theme)
+@import './assets/sass/reset'
+@import "./assets/sass/fonts"
+@import "./assets/sass/preloader"
+@import "./assets/sass/generic-card"
+@import "./assets/sass/scrolls"
+
+@import './assets/sass/apIcons'
+@import './assets/sass/_variables'
+@import './assets/sass/_mixins'
+@import './assets/sass/_navbars'
+
+// CUSTOM CLASSES
+.pos-left
+  background-position: left top
+  background-repeat: no-repeat
+  background-size: cover
+  // animation: pulses 9s infinite
+  // &:hover
+  //   animation: pulses 6s infinite
+
+
+.bg-number-01
+  background-image: url('/assets/images/profile/bg-number-01.svg')
+  @extend .pos-left
+.bg-number-02
+  background-image: url('/assets/images/profile/bg-number-02.svg')
+  @extend .pos-left
+.bg-number-03
+  background-image: url('/assets/images/profile/bg-number-03.svg')
+  @extend .pos-left
+.bg-number-04
+  background-image: url('/assets/images/profile/bg-number-04.svg')
+  @extend .pos-left
+.bg-number-05
+  background-image: url('/assets/images/profile/bg-number-05.svg')
+  @extend .pos-left
+
+// @keyframes pulses
+//   0%
+//     background-position: 0 -40px
+//     background-size: auto
+//   50%
+//     // background-size: contain
+//     background-size: auto
+//     background-position: 600% -40px
+//   100%
+//     // background-size: contain
+//     background-size: auto
+//     background-position: 0 -40px
+
+.custom-shadow
+  box-shadow: 0 0.3rem 0.8rem rgba(#333, .6)
+.custom-circle
+  border-radius: 50%
+.navbar-colors
+  color: #333
+  // border-bottom: 4px solid transparent
+  &:hover
+    // border-bottom: 4px solid #aaa
+    color: #333
+  &.active
+    // border-bottom: 4px solid #32b8b8
+    color: #333
+  span
+    transition: .3s
+    font-size: 1.1rem
+    font-family: 'Open Sans', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+    color: rgba(#32b8b8, .4)
+  &:hover
+    span
+      color: #32b8b8
+
+.wrapper
+  // background-image: url('../assets/images/bkg.jpg')
+  // background-position: center center
+  // background-repeat: no-repeat
+  // background-size: cover
+  background-color: #f1f1f1
+  display: block
+  // height: calc(100% - 80px)
+  min-height: calc(100vh - 80px) // main-content - navbar
+  overflow: hidden
+  overflow-y: auto
+  width: 100%
+  // padding-top: 80px
+
+.header
+  display: block
+  height: 80px
+  width: 100%
+  position: fixed
+  z-index:1
+  // position: absolute
+  top: 0
+  transition: .9s
+  background-color: rgba(#f1f1f1,.8)
+  &:hover
+    background-color: rgba(#f1f1f1,1)
+  // margin-bottom: 80px
+// NAV
+
+.main-content
+  // background-color: yellow
+  display: block
+  // background-image: url('../assets/images/pattern.png')
+  // height: calc(100% - 80px)
+  // min-height: calc(300vh - 80px)
+  // min-height: 100vh
+  // min-height: calc(100vh - (80px - 2rem))
+  // min-height: calc(100vh - (80px + 2rem))
+  min-height: calc(100vh - 80px)
+  width: 100%
+  // overflow: none
+  // position: relative
+  // padding: 1rem 0
+
+
+.profile-start
+  min-height: calc(100vh - 80px)
+  // background-color: #111
+  color: #111
+  display: grid
+  place-items: center
+  h2
+    border-left: 3px solid #32b8b8
+    font-weight: 700
+    font-size: 4rem
+    padding: .5rem 1rem
+
+  .align-texts
+    align-self: center
+  p
+    padding: .5rem 1rem
+
+.profile-gen
+  min-height: calc(100vh - 80px)
+  // background-color: #111
+  color: #111
+  display: grid
+  place-items: center
+  h2
+    // border-left: 3px solid #32b8b8
+    font-weight: 700
+    font-size: 3.8rem
+    padding: .5rem 1rem
+    word-wrap: break-word
+    &.b-right
+      border-left: 3px solid #32b8b8
+    &.b-left
+      border-left: 3px solid #32b8b8
+
+
+  .align-texts
+    align-self: center
+  p
+    padding: .5rem 1rem
+
+.bloque-brands
+  background-color: #09f
+  margin: 2rem auto
+
+  h3
+    font-size: 1.3rem
+  .txt-rotate
+    font-weight: 400
+    line-height: 40px
+
+.profile-about-me
+  min-height: calc(100vh - 80px)
+  color: #111
+  display: grid
+  place-items: center
+  h2
+    border-left: 3px solid #32b8b8
+    font-size: 2.5rem
+    font-weight: 700
+    padding: .5rem 1rem
+  h3, h4
+    padding: .5rem 1rem
+  .ytb
+    font-size: 1.5rem
+    color: #f00
+  p
+    padding: .5rem 1rem
+
+.profile-skills
+  min-height: calc(100vh - 80px)
+  color: #111
+
+  // display: grid
+  // place-items: center
+  h2
+    font-weight: 700
+    font-size: 2.5rem
+    padding: .5rem 1rem
+    border-right: 3px solid #32b8b8
+  h3
+    padding: .5rem 1rem
+  h4
+    border-right: 3px solid #32b8b8
+    background-color: #32b8b8
+    background: linear-gradient(90deg, rgba(#f1f1f1,.2) 0%, rgba(#32b8b8,1) 100%)
+    padding: .5rem 1rem .5rem 0
+    text-align: right
+  p
+    padding: .5rem 1rem
+  .align-texts
+    display: grid
+    place-items: center
+  .details
+    // align-self: center
+    text-align: left
+    // display: grid
+    // align-items: center
+    h2
+      border-left: 3px solid #32b8b8
+      border-right: 0
+    p
+      padding: .5rem 1rem
+  .skills-radios
+    text-align: right
+    h2
+      width: 100%
+    strong
+      line-height: 30px
+      // background: red
+      vertical-align: middle
+    .centered
+      // width: 380px
+      // min-width: 320px
+      margin: 0 auto
+      max-width: 380px
+    .col
+      .row
+        &:hover
+          background: linear-gradient(90deg, rgba(#f1f1f1,0) 0%, rgba(#32b8b8,.2) 100%)
+          color: #111
+
+    i
+      padding: 0
+      margin: 0
+      font-size: 1rem
+      color: #666
+
+.profile-services
+  min-height: calc(100vh - 80px)
+  color: #111
+  text-align: center
+  display: grid
+  place-items: center
+  h2
+    font-weight: 700
+    font-size: 2.5rem
+    padding: .5rem 1rem
+  p
+    padding: .5rem 1rem
+
+
+.profile-strategy
+  min-height: calc(100vh - 80px)
+  color: #111
+  display: grid
+  place-items: center
+  .align-texts
+    align-self: center
+  h2
+    font-weight: 700
+    font-size: 2.5rem
+    padding: .5rem 1rem
+    border-right: 3px solid #32b8b8
+  p
+    padding: .5rem 1rem
+  .link-section
+    color: #111
+    transition: .3s
+    padding: .5rem
+    line-height: 40px
+    span
+      transition: .6s
+    &:hover
+      span
+        color: #32b8b8
+        padding-right: .5rem
+
+.profile-my-work
+  min-height: calc(100vh - 80px)
+  color: #111
+  display: grid
+  place-items: center
+  .align-texts
+    align-self: center
+  h2
+    font-weight: 700
+    font-size: 2.5rem
+    padding: .5rem 1rem
+    border-right: 3px solid #32b8b8
+  p
+    padding: .5rem 1rem
+  .link-section
+    color: #111
+    transition: .3s
+    padding: .5rem
+    line-height: 40px
+    span
+      transition: .6s
+    &:hover
+      span
+        color: #32b8b8
+        padding-right: .5rem
+
+.profile-startups
+  min-height: calc(100vh - 80px)
+  color: #111
+  display: grid
+  place-items: center
+  .align-texts
+    align-self: center
+  h2
+    font-weight: 700
+    font-size: 2.5rem
+    padding: .5rem 1rem
+    border-left: 3px solid #32b8b8
+  p
+    padding: .5rem 1rem
+  .link-section
+    color: #111
+    transition: .3s
+    padding: .5rem
+    line-height: 40px
+    span
+      transition: .6s
+    &:hover
+      span
+        color: #32b8b8
+        // opacity: 1
+        padding-right: .5rem
+
+.btn-custom-rounded
+  border: 2px solid #111
+  padding: .5rem 1rem
+  color: #111
+  font-weight: 400
+  background-color: transparent
+  line-height: 30px
+  border-radius: 50px
+  display: inline-block
+  max-width: 280px
+  &:hover
+    border: 2px solid #32b8b8
+
+.bg-black
+  background-color: #111
+
+.profile-portfolio
+  min-height: calc(100vh - 80px)
+  text-align: center
+  h2
+    font-weight: 700
+    font-size: 2.5rem
+    padding: .5rem 1rem
+    border-left: 3px solid #32b8b8
+  h3
+    font-size: .9rem
+    height: 60px
+    line-height: 25px
+    padding: .2rem
+    display: grid
+    place-items: center
+  .col
+    padding: .2rem
+    margin: auto
+    .card-work
+      border: 4px solid #eee
+      background-color: #e0e0e0
+      border-radius: 4px
+      transition: .3s
+      color: #111
+    &:hover
+      .card-work
+        background-color: #32b8b8
+        border: 4px solid #32b8b8
+  img
+    border-radius: 3px 3px 0 0
+    width: 100%
+    word-spacing: normal
+    display: inline-block
+.bg-pulse
+  animation: pulse 9s infinite
+@keyframes pulse
+  0%
+    background-color: rgba(#32b8b8, .6)
+  25%
+    background-color: #333
+    color: #f1f1f1
+  75%
+    background-color: #09f
+    color: #f1f1f1
+  100%
+    background-color: rgba(#32b8b8, .6)
+.profile-get-in-touch
+  color: #f1f1f1
+  min-height: calc(100vh - 80px)
+  display: grid
+  place-items: center
+  .align-texts
+    display: grid
+  .distribution
+    background-color: rgba(#111, .8)
+    display: grid
+    place-items:  center stretch
+  h2
+    font-size: 2.5rem
+    font-weight: 700
+    border-left: 3px solid #32b8b8
+    padding: .5rem 1rem
+  p, ul
+    padding: .5rem 1rem
+  .contacts
+    a
+      font-weight: bold
+      color: #32b8b8
+      i
+        padding: 0
+    i
+      padding: .5rem
+.profile-pic
+  text-align: center
+  img
+    border-radius: 4px
+    width: 100%
+.pic-gray
+  filter: grayscale(100%)
+  height: auto
+  transition: .6s
+  &:hover
+    filter: grayscale(0%)
+    @extend .custom-shadow
+.footer
+  background-color: #333
+  color: $semiwite
+  padding: 1rem
+  margin: 0
+  display: grid
+  align-items: center
+  .dlv-logo
+    line-height: 80px
+    align-self: center
+    a
+      color: #f1f1f1
+    strong
+      vertical-align: middle
+      font-size: 2.6rem
+    span
+      font-size: 1.3rem
+      font-family: 'Open Sans', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+      font-weight: 300
+  .menu-footer
+    li
+      padding: .2rem
+    a
+      color: #f1f1f1
+      span
+        font-weight: bold
+        color: rgba(#32b8b8, .4)
+        border-bottom: 1px solid transparent
+      &:hover
+        span
+          border-bottom: 1px solid #32b8b8
+          color: #32b8b8
+  .copyright
+    align-self: center
+    line-height: 30px
+  .social
+    align-self: center
+    a
+      color: #f1f1f1
+      font-size: 1.3rem
+      overflow: hidden
+      margin: 0 6px
+      i
+        background-color: #32b8b8
+        color: #222
+        display: inline-block
+  p
+    padding: 0
+    margin: 0
+.small
+  font-size: .8rem
+.ghost
+  color: #666
+.btn-tag
+  display: inline-block
+  background-color: #f1f1f1
+  border-radius: 30px
+  padding: 0 .7rem 0 .3rem
+  overflow: hidden
+  line-height: 20px
+  i
+    display: inline-block
+    font-size: 1rem
+    padding: 0 .5rem
+  span
+    font-weight: normal
+    vertical-align: middle
+    display: inline-block
+    line-height: 18px
+    color: #333
+.dropdown-toggle::after
+  content: none
+.dropdown-toggle:focus
+  i
+    color: #32b8b8
+.overlay
+  height: 100%
+  width: 0
+  position: fixed
+  z-index: 1
+  left: 0
+  top: 0
+  background-color: rgb(0, 0, 0)
+  background-color: rgba(#ddd, 0.9)
+  overflow-x: hidden
+  transition: 0.5s
+  .overlay-content
+    position: relative
+    top: 100px
+    width: 100%
+  .overlay
+    width: 100%
+  .closebtn
+    position: absolute
+    top: 10px
+    right: 6px
+    width: 80px
+    height: 60px
+    padding: 10px
+    z-index: 1
+    text-align: center
+    a
+      width: 40px
+      height: 40px
+      color: #111
+      display: inline-block
+      line-height: 40px
+      text-align: center
+.fullscreen-menu
+  #drop-profile-menu, #drop-works-menu, #drop-services-menu, #drop-modal-menu
+    margin: 0 auto
+    width: 100%
+    background-color: #f1f1f1
+  .navbar-nav
+    width: 100%
+    // background: yellow
+    .nav-item
+      display: block
+      width: 100%
+      padding: 1rem
+    .nav-link
+      border-bottom: 0
+      transition: .3s
+      padding: .6rem 1rem
+      &:hover
+        border-bottom: 0
+        color: rgba(#222, 1)
+        padding-left: 10px
+
+.profile-not-found
+  min-height: calc(100vh - 80px)
+  color: #111
+  display: grid
+  place-items: center
+  .align-texts
+    align-self: center
+  h2
+    font-weight: 700
+    font-size: 2.5rem
+    padding: .5rem 1rem
+  p
+    padding: .5rem 1rem
+.bg-astro
+  img
+    padding: 30px 30px 30px 30px
+    animation: pulseastro 9s infinite
+@keyframes pulseastro
+  0%
+    padding: 30px 30px 30px 30px
+  25%
+    padding: 0px 30px 60px 30px
+  75%
+    padding: 30px 0px 30px 60px
+  100%
+    padding: 30px 30px 30px 30px
+
+#profile-gen,
+#profile-start,
+#profile-skills,
+#profile-about-me,
+#profile-services,
+#profile-strategy,
+#profile-startups,
+#profile-my-work,
+#profile-portfolio,
+#profile-get-in-touch
+  padding: 80px 0
+  min-height: 100vh
+
+.txt-rotate > .wrap
+  border-right: 3px solid #f1f1f1
+  color: #f1f1f1
+
+
+
+.txt-rotate > .wrap
+  border-right: 3px solid #f1f1f1
+  color: #f1f1f1

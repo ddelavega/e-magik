@@ -34,15 +34,15 @@ export class FirestorageService {
   //   console.log(data) //this will help you see the response
   // });
 
-  // async deleteImage(url: string) {
-  //   let pictureRef = this.angularFireStorage.refFromURL(url);
-  //   console.log(pictureRef);
-  //   await pictureRef.delete().subscribe(res => {
-  //     alert('ya se borro');
-  //     console.log('se elimino', url, res);
-  //     return;
-  //   })
-  // }
+  async deleteImage(url: string) {
+    let pictureRef = this.angularFireStorage.refFromURL(url);
+    console.log(pictureRef);
+    await pictureRef.delete().subscribe(res => {
+      alert('ya se borro');
+      console.log('se elimino', url, res);
+      return;
+    })
+  }
 
   // const deleteFromFirebase = (url) => {
   //     //1.
