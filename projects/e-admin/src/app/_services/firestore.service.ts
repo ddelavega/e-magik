@@ -18,8 +18,8 @@ export class FirestoreService {
     return collection.doc(id).set(data);
   }
 
-  getDoc(path: string, id: string) {
-    const collection = this.database.collection(path);
+  getDoc<T>(path: string, id: string) {
+    const collection = this.database.collection<T>(path);
     return collection.doc(id).valueChanges();
   }
 
@@ -29,6 +29,22 @@ export class FirestoreService {
   }
 
   updateDoc(data: any, path: string, id: string) {
+
+    // const userRef: AngularFirestoreDocument<any> = this.afs.doc(
+    //   `users/${user.uid}`
+    // );
+    // const userData: User = {
+    //   uid: user.uid,
+    //   email: user.email,
+    //   // displayName: user.displayName,
+    //   // photoURL: user.photoURL,
+    //   emailVerified: user.emailVerified,
+    // };
+    // return userRef.set(userData, {
+    //   merge: true,
+    // });
+
+
     const collection = this.database.collection(path);
     return collection.doc(id).update(data);
   }

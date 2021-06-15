@@ -5,17 +5,21 @@ import { MaterialDesignModule } from '../material-design';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EAdministrationComponent, ServiceLogComponent } from '.';
 import { ESectionsRoutingModule } from './e-sections-routing.module';
+import { ProductosComponent } from './productos/productos.component';
+import { ComponentesModule } from '../componentes/componentes.module';
+import { CartComponent } from './cart/cart.component';
 
 const COMPONENTS = [EAdministrationComponent, ServiceLogComponent];
 @NgModule({
-  declarations: [...COMPONENTS],
+  declarations: [...COMPONENTS, ProductosComponent, CartComponent],
   exports: [...COMPONENTS],
   imports: [
     CommonModule,
     ESectionsRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialDesignModule
+    MaterialDesignModule,
+    ComponentesModule
   ]
 })
 export class ESectionsModule { }

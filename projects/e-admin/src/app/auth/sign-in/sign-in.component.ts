@@ -30,7 +30,6 @@ export class SignInComponent implements OnInit {
       password: ['', Validators.required]
     });
   }
-
   isFieldInvalid(field: string) {
     // this.loginForm.get(field).onKeyup() ? this.texting = true : this.texting = false;
     return (

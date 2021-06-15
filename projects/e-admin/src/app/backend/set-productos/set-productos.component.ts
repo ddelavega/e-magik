@@ -40,23 +40,17 @@ export class SetProductosComponent implements OnInit {
       name: new FormControl('', Validators.required),
       price: new FormControl('', Validators.required),
       reducedPrice: new FormControl('', Validators.required),
-      // picture: new FormControl(''),
-
     });
   }
-
 
   get name() { return this.productFormGroup.get('name'); }
   get price() { return this.productFormGroup.get('price'); }
   get reducedPrice() { return this.productFormGroup.get('reducedPrice'); }
-  // get picture() { return this.productFormGroup.get('picture'); }
-  // get imagen() { return this.productFormGroup.get('imagen'); }
-
-
 
   ngOnInit(): void {
     this.getProductos();
   }
+
   async guardarProducto() {
     this.presentLoading();
     this.producto = {
@@ -84,8 +78,6 @@ export class SetProductosComponent implements OnInit {
       }).catch(err => {
         this.presentToast('No se ha podido guardar', 'danger');
       });
-
-
   }
 
   getProductos() {
@@ -116,8 +108,8 @@ export class SetProductosComponent implements OnInit {
             console.log('response', response);
           });
           this.firestoreService.deleteDoc(this.path, producto.id).then(res => {
-            this.loading.dismiss();
-            // this.alertController.dismiss();
+            // this.loading.dismiss();
+            this.alertController.dismiss();
             this.presentToast('Eliminado con exito', 'danger');
           }).catch(err => {
             this.presentToast(`Ocurrió un error ${err}`, 'danger');
@@ -134,21 +126,16 @@ export class SetProductosComponent implements OnInit {
     console.log('edit', producto);
     this.productFormGroup.setValue(
       {
-        // // id: producto.id,
         name: producto.name,
         price: producto.price,
         reducedPrice: producto.reducedPrice,
-        // picture: producto.picture,
       }
     );
     // console.log('productIn', producto);
     this.producto = producto;
     this.isEdit = true;
     this.isVisible = true;
-
-
     console.log(this.newProducto);
-
     if (this.newFile) {
       console.log('pf1', this.newProducto.foto);
     } else {

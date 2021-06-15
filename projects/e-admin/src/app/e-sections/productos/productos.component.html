@@ -1,0 +1,28 @@
+<h2><i class="icon ico-store"></i> Tienda</h2>
+<!-- {{ productos | json}} -->
+<!-- <ng-container *ngFor="let producto of prod
+
+  // id: "csbWo8V2fRTspyxKPurn"
+  // name: "tre"
+  // picture: "https://firebasestorage.googleapis.com/v0/b/e-magik.appspot.com/o/productos%2FcsbWo8V2fRTspyxKPurn?alt=media&token=53d3e5cd-58cb-4e19-af87-8c81862d78c3"
+  // price: 234243
+  // reducedPrice: 234234 -->
+  <div class="row row-cols-1, row-cols-sm-2 row-cols-md-3">
+    <!-- class="prd-card col col-sm-6 col-md-6 col-lg-3 col-xl-3 py-3 mx-auto" -->
+    <div *ngFor="let producto of productos" class="prd-card"
+    [ngClass]="{'col col-sm-6 col-md-6 col-lg-3 col-xl-3 py-3 mx-auto': producto.lenght}">
+      <app-producto [producto]="producto"></app-producto>
+      <!-- <div class="shadow-mt shadow-brd">
+        <a class="imga">
+          <img class="img-fluid" [src]="producto.picture">
+        </a>
+        <h2 class="mb-2">{{producto.name}}</h2>
+        <small class="text-secondary px-2 mb-2">{{producto.id}}</small>
+        <p class="eq-p text-truncate">{{producto.price}}<br />
+        </p>
+        <p class="p-2 text-right">
+          <button class="btn btn-sm btn-primary">Detalle</button>
+        </p>
+      </div> -->
+    </div>
+  </div>

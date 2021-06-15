@@ -1,0 +1,20 @@
+<div class="shadow-mt shadow-brd">
+  <a class="imga">
+    <img class="img-fluid" [src]="producto.picture">
+  </a>
+  <h2 class="mb-2">{{producto.name}}</h2>
+  <small class="text-secondary px-2 mb-2">{{producto.id}}</small>
+  <p class="eq-p text-truncate small prices">
+    <span class="small old">
+      {{producto.reducedPrice | currency}}
+    </span>
+    <br />
+    <strong class="new">
+      {{producto.price | currency}}
+    </strong>
+  </p>
+  <p class="p-2 text-right">
+    <button class="btn btn-sm btn-primary">Detalle</button>
+  </p>
+  <button class="addCart"><i class="icon ico-cart"></i></button>
+</div>

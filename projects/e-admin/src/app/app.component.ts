@@ -56,6 +56,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.usuario = usuario;
       this.cargando = false;
     });
+
     this.createFormCuit();
 
   }

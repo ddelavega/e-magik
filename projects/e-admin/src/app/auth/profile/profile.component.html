@@ -4,16 +4,98 @@
 <div class="container-fluid container-xl profile-gen" id="profile-gen">
 <ng-container *ngIf="usuario && !cargando; else showlogin">
     <div class="row row-cols-1 row-cols-md-2">
-
       <div class="col order-md-2 profile-pic p-2 p-md-0">
-        <img class="img-fluid pic-gray" [src]="usuarioPhoto" alt="Profile image">
+
+        <img class="img-fluid pic-gray" [src]="cliente.foto ? cliente.foto : usuarioPhoto" alt="Profile image">
+        <br>
+        {{uidCliente.uid}}
       </div>
       <div class="col order-md-1 align-texts my-2 my-md-0">
-        <h2 class="b-right"><strong>Perfil</strong></h2>
-        <h3 class="b-right"><strong>{{(usuario.displayName) ? usuario.displayName : usuario.email}}</strong></h3>
-        <p>User ID: <strong>{{usuario.uid}}</strong></p>
-        <p>Email: <strong>{{usuario.email}}</strong></p>
-        <p>Verificado: <strong class="text-{{usuario.emailVerified ? 'success' : 'danger'}}"><i class="icon ico-{{usuario.emailVerified ? 'check' : 'times'}}"></i></strong></p>
+        <!-- {{cliente | json}} -->
+        <!-- {{usuario | json}} -->
+        <ng-container *ngIf="cliente && !isEdit; else clienteForm">
+        <ng-container *ngIf="cliente; else dataUsuario">
+          <h2 class="b-right"><strong>Perfil</strong> <span class="small"><a class="small text-secondary" (click)="datosCliente(cliente)"><i class="icon ico-pen"></i>Editar</a></span></h2>
+          <h3 class="b-right"><strong>{{(cliente.nombre) ? cliente.nombre : cliente.email}}</strong></h3>
+          <p>User ID: <br><strong>{{cliente.uid}}</strong></p>
+          <p>Email: <br><strong>{{cliente.email}}</strong></p>
+          <p>Mobil: <br><strong>{{cliente.celular}}</strong></p>
+          <p>Referencia: <br><strong>{{cliente.referencia}}</strong></p>
+          <p>Ubicación: <br><strong>{{cliente.ubicacion}}</strong></p>
+          <p>Verificado: <strong class="text-{{cliente.emailVerified ? 'success' : 'danger'}}"><i class="icon ico-{{cliente.emailVerified ? 'check' : 'times'}}"></i></strong></p>
+
+        </ng-container>
+        <ng-template #dataUsuario>
+          <h2 class="b-right"><strong>Perfil</strong> <span class="small"><a class="small text-secondary" (click)="datosCliente(usuario)"><i class="icon ico-pen"></i>Editar</a></span></h2>
+          <h3 class="b-right"><strong>{{(usuario.displayName) ? usuario.displayName : usuario.email}}</strong></h3>
+          <p>User ID: <br><strong>{{usuario.uid}}</strong></p>
+          <p>Email: <br><strong>{{usuario.email}}</strong></p>
+          <p>Verificado: <strong class="text-{{usuario.emailVerified ? 'success' : 'danger'}}"><i class="icon ico-{{usuario.emailVerified ? 'check' : 'times'}}"></i></strong></p>
+        </ng-template>
+
+          <!-- <p class="p-2 alert-info">
+            Debe registrar sus datos.
+          </p>
+          uid: '',<br>
+        email: '',<br> -->
+
+        </ng-container>
+
+        <ng-template #clienteForm>
+          <form [formGroup]="clientForm" (ngSubmit)="onSubmit()" class="formClient mx-auto px-0">
+          <div class="block-close">
+            <span class="px-2" (click)="isEdit = false;closeForm()"><i class="icon ico-times"></i></span>
+          </div>
+          <div class="row row-cols-1 py-2 px-0">
+            <mat-form-field class="col pb-2 d-block">
+              <input class="inputsLogin" matInput placeholder="Nombre" formControlName="nombre"
+                autocomplete="nombre" required autocomplete="off" (focus)="error = ''">
+              <mat-error *ngIf="isFieldInvalid('nombre')">
+                Por favor ingrese un nombre
+              </mat-error>
+            </mat-form-field> <br>
+            <mat-form-field class="col pb-2 d-block">
+              <input class="inputsLogin" matInput placeholder="Telefono" formControlName="celular"
+                autocomplete="celular" required autocomplete="off" (focus)="error = ''">
+              <mat-error *ngIf="isFieldInvalid('celular')">
+                Por favor ingrese un teléfono
+              </mat-error>
+            </mat-form-field> <br>
+            <mat-form-field class="col pb-2 d-block">
+              <input class="inputsLogin" matInput placeholder="Referencia" formControlName="referencia"
+                autocomplete="referencia" required autocomplete="off" (focus)="error = ''">
+              <mat-error *ngIf="isFieldInvalid('referencia')">
+                Por favor ingrese una referencia
+              </mat-error>
+            </mat-form-field> <br>
+            <mat-form-field class="col pb-2 d-block">
+              <input class="inputsLogin" matInput placeholder="Ubicación" formControlName="ubicacion"
+                autocomplete="ubicacion" required autocomplete="off" (focus)="error = ''">
+              <mat-error *ngIf="isFieldInvalid('ubicacion')">
+                Por favor ingrese una ubicación
+              </mat-error>
+            </mat-form-field> <br>
+            <div class="col pb-2 d-block">
+              <label for="foto" class="label">Foto <i class="icon ico-camera"></i></label>
+              <input class="d-none" type="file" accept="image/*" (change)="newImageLoad($event);"
+              id="foto">
+      <img *ngIf="isEdit && !newClient.foto ? cliente.foto : newClient.foto" [src]="isEdit && !newClient.foto ? cliente.foto : newClient.foto" alt="Imagen">
+      {{isEdit && !newClient.foto ? 'cliente.foto' : 'newClient.foto'}}
+              <!-- {{isEdit && !newCliente.foto ? 'cliente.foto' : 'newCliente.foto'}} -->
+
+
+            </div> <br>
+          </div>
+          <br>
+          <button type="submit" class="btn-custom mx-3" [disabled]="clientForm.invalid || loading">Guardar Datos {{texting}}
+            <span *ngIf="loading && !error && !clientForm.invalid"
+              class="spinner-border spinner-border-sm mr-1"></span>
+          </button>
+        </form>
+
+        </ng-template>
+
+
         <p class="alert-info p-2">
           <span class="small">
             Necesitas completar tus datos para utilizar opciones avanzadas.

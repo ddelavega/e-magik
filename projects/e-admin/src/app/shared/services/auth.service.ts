@@ -39,14 +39,10 @@ export class AuthService {
       .then((result) => {
         this.ngZone.run(() => {
           isSigned = true;
-          this.router.navigate(['dashboard']);
-          console.log('DIRIGE A DASHBOARD 2');
-          // if(isSigned){
-          //   this.router.navigate(['dashboard']);
-          //   console.log('isSigned', isSigned);
-
-          // }
+          this.router.navigate(['/backend/set-productos']);
+          return;
         });
+
         this.SetUserData(result.user);
       })
       .catch((error) => {
@@ -140,7 +136,7 @@ export class AuthService {
     const userData: User = {
       uid: user.uid,
       email: user.email,
-      displayName: user.displayName,
+      // displayName: user.displayName,
       photoURL: user.photoURL,
       emailVerified: user.emailVerified,
     };
