@@ -11,3 +11,9 @@
   </div>
 </div> -->
 LANDING
+<div class="row">
+    <div *ngFor="let producto of productos" class="prd-card col col-md-6 col-lg-4 col-xl-3 py-3 mx-auto">
+      <app-producto [producto]="producto"></app-producto>
+
+    </div>
+  </div>

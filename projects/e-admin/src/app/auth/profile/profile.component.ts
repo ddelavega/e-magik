@@ -57,22 +57,12 @@ export class ProfileComponent implements OnInit {
       this.uidCliente.uid = usuario.uid;
       this.getUserInfo(usuario.uid, usuario.email);
       if (usuario && usuario.photoURL) {
-        // this.usuarioPhoto = usuario.photoURL.replace('s96-c', 's400-c');
         this.usuarioPhotoSm = usuario.photoURL;
         console.log('Cambio imagen highres', this.usuarioPhoto);
       } else {
         this.usuarioPhoto = '/assets/images/users/grogu.png'
       }
-      // this.firestoreService.getDoc(this.path, usuario.uid)
-      //   .pipe(first()).subscribe((cliente) => {
-      //     console.log('cl', cliente);
-      //     this.cliente = { ...this.cliente };
-      //     return cliente;
-      //   });
-
-      console.log('catga', this.cliente, this.firestoreService.getDoc(this.path, usuario.uid));
     });
-
   }
 
 

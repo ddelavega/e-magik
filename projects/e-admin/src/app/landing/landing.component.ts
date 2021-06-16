@@ -1,7 +1,8 @@
 import { Component, OnInit, VERSION, } from '@angular/core';
+import { first } from 'rxjs/operators';
 import { AuthService } from '../shared/services';
-import { User } from '../_models';
-import { UserService } from '../_services';
+import { Product, User } from '../_models';
+import { FirestorageService, FirestoreService, UserService } from '../_services';
 
 @Component({
   selector: 'app-landing',
@@ -10,17 +11,22 @@ import { UserService } from '../_services';
 })
 export class LandingComponent implements OnInit {
   ngVersion = VERSION;
-
-  // loading = false;
-  // user: User;
-  // userFromApi: User;
+  path = 'productos';
+  productos = [];
 
   constructor(
+    private firestoreService: FirestoreService,
+    private firestorageService: FirestorageService
   ) {
-    // this.user = this.authService..userValue;
+    this.loadProductos();
   }
 
   ngOnInit(): void {
   }
-
+  loadProductos() {
+    this.firestoreService.getCollection<Product[]>(this.path).pipe(first()).subscribe(res => {
+      console.log('res productos', res);
+      this.productos = res;
+    })
+  }
 }

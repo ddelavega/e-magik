@@ -3,3 +3,8 @@
   routerLink="/e-admin/productos">
  <i class="icon ico-chevron-left"></i> volver a Productos
 </a>
+<div class="row" *ngIf="pedido.productos">
+    <div *ngFor="let producto of pedido.productos" class="prd-card col col-md-6 col-lg-4 col-xl-3 py-3 mx-auto">
+      <app-item-cart [productoPedido]="producto"></app-item-cart>
+    </div>
+  </div>

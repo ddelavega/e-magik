@@ -41,6 +41,6 @@
 //     this.currentUserSubject.next(null);
 //     this.currentUser = null;
 //     console.log('User', this.currentUser);
-//     this.router.navigate(['/login']);
+//     this.router.navigate(['/login']);public router: Router
 //   }
 // }

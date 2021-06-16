@@ -1,3 +1,4 @@
+import { ComponentesModule } from './componentes/componentes.module';
 import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule, HammerModule } from '@angular/platform-browser';
@@ -54,7 +55,7 @@ import { LandingComponent } from './landing';
     AngularFireStorageModule,
     HammerModule,
     IonicModule.forRoot(),
-
+    ComponentesModule
   ],
   providers: [
     // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

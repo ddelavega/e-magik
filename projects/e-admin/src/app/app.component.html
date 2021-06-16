@@ -27,7 +27,8 @@
               </p> -->
               <ul>
                 <li><a class="nav-item nav-link" routerLinkActive="active" routerLink="/"
-                    [routerLinkActiveOptions]="{ exact: true }" (click)="isMobile && closeMenu()">Dashboard</a>
+                    [routerLinkActiveOptions]="{ exact: true }" (click)="isMobile && closeMenu()">
+                    <i class="icon ico-chart-bars"></i> Dashboard</a>
                 </li>
                 <!-- <li><a class="nav-item nav-link" routerLinkActive="active" routerLink="/backend/administrador"
                     (click)="isMobile && closeMenu()">
@@ -41,98 +42,13 @@
                 </li> -->
                 <li><a class="nav-item nav-link" routerLinkActive="active"
                     routerLink="/e-admin/productos" (click)="isMobile && closeMenu()">
-                     Tienda
+                     <i class="icon ico-store"></i> Tienda
                   </a>
                 </li>
-                <li>
-                  <div class="accordion accordion-flush opened" id="accordionProducts">
-                    <div class="accordion-item">
-                      <a class="nav-item nav-link collapsed" id="flush-products" data-bs-toggle="collapse"
-                        data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                        Productos
-                      </a>
-                      <ul id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-products"
-                        data-bs-parent="#accordionProducts">
-                        <li><a class="nav-item nav-link" routerLinkActive="active" routerLink="/backend/set-productos"
-                            (click)="isMobile && closeMenu()"><i class="icon ico-dolly"></i> Configuración de Productos</a></li>
-                        <li><a class="nav-item nav-link" routerLinkActive="active" routerLink="/products/list" [routerLinkActiveOptions]="{ exact: true }"
-                            (click)="isMobile && closeMenu()">List</a></li>
-                        <li><a class="nav-item nav-link" routerLinkActive="active" routerLink="/products/add"
-                            (click)="isMobile && closeMenu()">Add</a></li>
-                      </ul>
-
-
-                    </div>
-                  </div>
-
-                </li>
-                <li><a class="nav-item nav-link" routerLinkActive="active" routerLink="/e-admin/organizations"
-                    (click)="isMobile && closeMenu()">
-                    Organizaciones
-                  </a>
-                </li>
-                <li><a class="nav-item nav-link" routerLinkActive="active"
-                    routerLink="/e-admin/bitacora-de-servicios" (click)="isMobile && closeMenu()">
-                    Bitacora de Servicios
-                  </a>
-                </li>
-                <!-- <li *ngIf="isClient"><a class="nav-item nav-link" routerLinkActive="active" routerLink="/client"
-                    (click)="isMobile && closeMenu()">Client</a></li> -->
-
-
-                <!-- <li>
-                  <div class="accordion accordion-flush opened" id="accordionFlushExample">
-                    <div class="accordion-item">
-                      <a class="nav-item nav-link collapsed" id="flush-headingOne" data-bs-toggle="collapse"
-                        data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                        Accordion
-
-                      </a>
-
-                      <ul id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
-                        data-bs-parent="#accordionFlushExample">
-                        <li><a class="nav-item nav-link" routerLinkActive="active" routerLink="login"
-                            (click)="isMobile && closeMenu()">Logoutin</a></li>
-                        <li><a class="nav-item nav-link" routerLinkActive="active" routerLink="login"
-                            (click)="isMobile && closeMenu()">Logoutin</a></li>
-                        <li><a class="nav-item nav-link" routerLinkActive="active" routerLink="login"
-                            (click)="isMobile && closeMenu()">Logoutin</a></li>
-                        <li *ngIf="isAdmin"><a class="nav-item nav-link" routerLinkActive="active" routerLink="/admin"
-                            (click)="isMobile && closeMenu()">Admin</a></li>
-                      </ul>
-
-
-                    </div>
-                  </div>
-
-                </li>
-                <li>
-                  <div class="accordion accordion-flush opened" id="accordionFlushExample2">
-                    <div class="accordion-item">
-                      <a class="nav-item nav-link collapsed" id="flush-headingTwo" data-bs-toggle="collapse"
-                        data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                        Accordion
-
-                      </a>
-
-                      <ul id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
-                        data-bs-parent="#accordionFlushExample2">
-                        <li><a class="nav-item nav-link" routerLinkActive="active" routerLink="login"
-                            (click)="isMobile && closeMenu()">Logoutin</a></li>
-                        <li><a class="nav-item nav-link" routerLinkActive="active" routerLink="login"
-                            (click)="isMobile && closeMenu()">Logoutin</a></li>
-                        <li><a class="nav-item nav-link" routerLinkActive="active" routerLink="login"
-                            (click)="isMobile && closeMenu()">Logoutin</a></li>
-                        <li *ngIf="isAdmin"><a class="nav-item nav-link" routerLinkActive="active" routerLink="/admin"
-                            (click)="isMobile && closeMenu()">Admin</a></li>
-                      </ul>
-
-
-                    </div>
-                  </div>
-                  <a class="nav-item nav-link" routerLinkActive="active" routerLink="login" (click)="logout()"
-                    (click)="isMobile && closeMenu()">Logout</a>
-                </li> -->
+                <li><a class="nav-item nav-link" routerLinkActive="active" routerLink="/e-admin/cart"
+                        (click)="isMobile && closeMenu()"><i class="icon ico-cart"></i> Carro de Compras</a></li>
+                <li><a class="nav-item nav-link" routerLinkActive="active" routerLink="/backend/set-productos"
+                      (click)="isMobile && closeMenu()"><i class="icon ico-dolly"></i> Configuración de Productos</a></li>
                 <li>
                   <a class="nav-item nav-link" routerLinkActive="active" routerLink="login" (click)="logout()"
                     (click)="isMobile && closeMenu()">Logout</a>

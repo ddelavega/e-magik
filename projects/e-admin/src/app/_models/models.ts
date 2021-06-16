@@ -30,14 +30,13 @@ export interface ProductoPedido {
 export interface Pedido {
   id: string;
   cliente?: Client;
-  productos?: ProductoPedido;
+  productos?: ProductoPedido[];
   precioTotal: number;
   estado: EstadoPedido;
   fecha: Date;
-  cantidad: number;
   valoracion: number;
 }
 
-export type EstadoPedido = 'enviado' | 'visto' | 'camino' | 'entregado';
+export type EstadoPedido = 'recibido' | 'en proceso' | 'enviado' | 'visto' | 'camino' | 'entregado';
 
 

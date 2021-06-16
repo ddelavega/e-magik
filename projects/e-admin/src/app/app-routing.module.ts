@@ -9,7 +9,7 @@ import { AuthGuard } from './shared/guard';
 import { RoleBo } from './_models';
 
 const routes: Routes = [
-  { path: 'sign-in', component: SignInComponent },
+  { path: 'login', component: SignInComponent },
   { path: 'registrarse', component: SignUpComponent },
   { path: 'recupero', component: ForgotPasswordComponent },
   { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
@@ -19,8 +19,14 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     // data: { roles: [RoleBo.Admin] }
   },
-  { path: '', component: LandingComponent, canActivate: [AuthGuard] },
-  { path: 'backend', loadChildren: () => import('./backend/backend.module').then(m => m.BackendModule) },
+  {
+    path: '', component: LandingComponent
+    // , canActivate: [AuthGuard]
+  },
+  {
+    path: 'backend', loadChildren: () => import('./backend/backend.module').then(m => m.BackendModule),
+    canActivate: [AuthGuard],
+  },
   // {
   //   path: 'products',
   //   loadChildren: () => import('./products/products.module').then(m => m.ProductsModule),
