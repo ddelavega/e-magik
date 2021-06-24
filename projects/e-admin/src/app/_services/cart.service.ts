@@ -99,7 +99,7 @@ export class CartService {
       } else {
         const add: ProductoPedido = {
           cantidad: 1,
-          producto,
+          producto
         }
         this.pedido.productos.push(add);
       }
