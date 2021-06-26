@@ -51,7 +51,7 @@ import { LandingComponent } from './landing';
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AngularFirestoreModule.enablePersistence({ synchronizeTabs: true }),
+    // AngularFirestoreModule.enablePersistence({ synchronizeTabs: true }),
     AngularFireStorageModule,
     HammerModule,
     IonicModule.forRoot(),

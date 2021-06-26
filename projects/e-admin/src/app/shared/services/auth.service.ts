@@ -39,7 +39,7 @@ export class AuthService {
       .then((result) => {
         this.ngZone.run(() => {
           isSigned = true;
-          this.router.navigate(['/backend/set-productos']);
+          this.router.navigate(['/e-admin/productos']);
           return;
         });
 

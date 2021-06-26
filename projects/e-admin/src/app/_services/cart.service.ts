@@ -17,6 +17,7 @@ export class CartService {
   cliente: Client;
   private pedido: Pedido;
   pedido$ = new Subject<Pedido>();
+  clientSubscriber: Subscription;
   cartSubscriber: Subscription;
 
   constructor(
@@ -26,7 +27,8 @@ export class CartService {
     public router: Router
   ) {
     this.initCart();
-    this.authService.afAuth.user.pipe(first()).subscribe((usuario) => {
+
+    this.authService.afAuth.user.subscribe((usuario) => {
       if (usuario !== null) {
 
         console.log('UID', usuario.uid);
@@ -36,6 +38,7 @@ export class CartService {
         this.isLogged = true;
       } else {
         this.isLogged = false;
+
       }
     });
   }
@@ -74,13 +77,13 @@ export class CartService {
 
   loadCliente() {
     const path = 'clientes'
-    this.firestoreService.getDoc<Client>(path, this.uidCliente)
-      .pipe().subscribe(cliente => {
+    this.clientSubscriber = this.firestoreService.getDoc<Client>(path, this.uidCliente)
+      .subscribe(cliente => {
         console.log('get', cliente);
         this.cliente = cliente;
         this.loadCart();
-
-        return cliente;
+        this.clientSubscriber.unsubscribe()
+        // return cliente;
       });
   }
 
@@ -94,7 +97,7 @@ export class CartService {
 
   addProducto(producto: Product) {
     console.log('Agrega', this.uidCliente);
-    if (this.uidCliente) {
+    if (this.uidCliente.length) {
       const item = this.pedido.productos.find(productoPedido => {
         return (productoPedido.producto.id === producto.id)
       });
