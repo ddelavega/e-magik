@@ -9,6 +9,7 @@ import { CartService } from '../../_services/cart.service';
 })
 export class ItemCartComponent implements OnInit {
   @Input() productoPedido: ProductoPedido;
+  @Input() buttons = true;
 
   constructor(public cartService: CartService) { }
 

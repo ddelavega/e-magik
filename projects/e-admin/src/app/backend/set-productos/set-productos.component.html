@@ -1,6 +1,6 @@
 <div class="container">
   <h2><i class="icon ico-dolly"></i> Configuración de Productos</h2>
-  <button class="btn btn-warning d-inline" (click)="nuevoProducto()">Agregar + <i class="icon ico-cart"></i></button>
+  <button class="btn btn-warning d-inline" (click)="nuevoProducto()">Agregar +</button>
 <ng-container *ngIf="isVisible">
 
   <form [formGroup]="productFormGroup" (ngSubmit)="isEdit ? editarProductoDb() : guardarProducto()" class="row mx-auto">
@@ -31,16 +31,8 @@
       <label for="foto" class="label">Foto <i class="icon ico-camera"></i></label>
         <input class="d-none" type="file" accept="image/*" (change)="newImageLoad($event);"
          id="foto">
-        <!-- <p class="text-danger" *ngIf="foto.invalid && !foto.pristine">Name is required.</p> -->
-      <!-- </div> -->
-      <!-- {{producto.picture}} -
-      {{newProducto.foto}} -
-      [{{newImage}}] x
-      ({{newFile}}) -->
       <img *ngIf="isEdit && !newProducto.foto ? producto.picture : newProducto.foto" [src]="isEdit && !newProducto.foto ? producto.picture : newProducto.foto" alt="Imagen">
       {{isEdit && !newProducto.foto ? 'producto.picture' : 'newProducto.foto'}}
-
-
       <ng-container *ngIf="!isEdit; else editar">
         <button class="btn btn-{{productFormGroup.valid ? 'primary': 'secondary'}} d-inline" type="submit" [disabled]="!productFormGroup.valid">Guardar</button>
       </ng-container>
@@ -48,12 +40,9 @@
         <button class="btn btn-{{productFormGroup.valid ? 'primary': 'secondary'}} d-inline" type="submit" [disabled]="!productFormGroup.valid">Editar</button>
       </ng-template>
     </div>
-
-
   </form>
 </ng-container>
 <ul *ngIf="productos">
-
   <li *ngFor="let producto of productos">
     <span> <img  style="max-height: 100px;" *ngIf="producto.picture" [src]="producto.picture" alt="imagen">{{producto.name}}</span>
     <span (click)="editarProducto(producto)"><i class="icon ico-pen"></i></span>

@@ -1,0 +1,39 @@
+<h2><i class="icon ico-clock"></i> Historial de pedidos</h2>
+
+<nav>
+  <div class="nav nav-tabs row" id="nav-tab" role="tablist">
+    <button (click)="getPedidosNuevos()" class="nav-link col active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
+      Pedidos Nuevos
+    </button>
+    <button (click)="getPedidosCulminados()" class="nav-link col" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
+      Pedidos Culminados
+    </button>
+    <!-- <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">
+      Contact
+    </button> -->
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane row p-3 fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+
+    <div *ngFor="let pedido of pedidos">
+        <div class="card row my-2">
+        Estado: {{pedido.estado}} <br>
+        <!-- fecha: {{pedido.fecha.seconds | date}} <br> -->
+        <app-item-cart class="prd-card col py-3 mx-auto" *ngFor="let producto of pedido.productos" [buttons]="false" [productoPedido]="producto"></app-item-cart>
+        <!-- {{pedido.id}} -->
+      </div>
+    </div>
+  </div>
+  <div class="tab-pane p-3 fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+    <div *ngFor="let pedido of pedidos">
+        <div class="card row my-2">
+        Estado: {{pedido.estado}} <br>
+        fecha: {{pedido.fecha.seconds | date}} <br>
+        <app-item-cart class="prd-card col py-3 mx-auto" *ngFor="let producto of pedido.productos" [buttons]="false" [productoPedido]="producto"></app-item-cart>
+        <!-- {{pedido.id}} -->
+      </div>
+    </div>
+  </div>
+  <!-- <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div> -->
+</div>

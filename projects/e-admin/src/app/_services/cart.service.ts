@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
 import { FirestoreService } from '.';
 import { AuthService } from '../shared/services';
@@ -17,6 +17,7 @@ export class CartService {
   cliente: Client;
   private pedido: Pedido;
   pedido$ = new Subject<Pedido>();
+  cartSubscriber: Subscription;
 
   constructor(
     public authService: AuthService,
@@ -41,7 +42,10 @@ export class CartService {
 
   loadCart() {
     const path = `clientes/${this.uidCliente}/${this.path}`;
-    this.firestoreService.getDoc<Pedido>(path, this.uidCliente).pipe(first()).subscribe(data => {
+    if (this.cartSubscriber) {
+      this.cartSubscriber.unsubscribe();
+    }
+    this.cartSubscriber = this.firestoreService.getDoc<Pedido>(path, this.uidCliente).pipe(first()).subscribe(data => {
       console.log('data', data);
       if (data) {
         this.pedido = data;
@@ -90,7 +94,7 @@ export class CartService {
 
   addProducto(producto: Product) {
     console.log('Agrega', this.uidCliente);
-    if (this.uidCliente.length) {
+    if (this.uidCliente) {
       const item = this.pedido.productos.find(productoPedido => {
         return (productoPedido.producto.id === producto.id)
       });
@@ -104,9 +108,14 @@ export class CartService {
         this.pedido.productos.push(add);
       }
     } else {
+      console.log('dirige');
+
+
       this.router.navigate(['/login']);
       return;
     }
+    this.pedido$.next(this.pedido);
+
     console.log('en add pedido', this.pedido);
     const path = `clientes/${this.uidCliente}/${this.path}`;
     this.firestoreService.createDoc(this.pedido, path, this.pedido.id).then(() => {
@@ -129,6 +138,8 @@ export class CartService {
           this.pedido.productos.splice(position, 1);
         }
       }
+      this.pedido$.next(this.pedido);
+
       console.log('en remove pedido', this.pedido);
       const path = `clientes/${this.uidCliente}/${this.path}`;
       this.firestoreService.createDoc(this.pedido, path, this.pedido.id).then(() => {
@@ -139,6 +150,13 @@ export class CartService {
 
   realizarPedido() {
 
+  }
+  clearCart() {
+    const path = `clientes/${this.uidCliente}/cart`;
+    this.firestoreService.deleteDoc(path, this.uidCliente).then(() => {
+      this.initCart();
+
+    });
   }
 
 }

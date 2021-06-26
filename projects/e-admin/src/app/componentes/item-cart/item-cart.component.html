@@ -1,34 +1,33 @@
 <div class="shadow-mt shadow-brd">
-  <a class="imga">
-    <img class="img-fluid" [src]="productoPedido.producto.picture">
-  </a>
-  <h2 class="mb-2">{{productoPedido.producto.name}}</h2>
-  <small class="text-secondary px-2 mb-2">{{productoPedido.producto.id}}</small>
-  <p class="eq-p text-truncate small prices">
+  <div class="row">
+    <a class="imga col">
+      <img class="img-fluid" [src]="productoPedido.producto.picture">
+    </a>
+    <div class="col">
+      <h2>{{productoPedido.producto.name}}</h2>
 
-    <span class="small old">
-      {{productoPedido.producto.reducedPrice | currency}}
-    </span>
-    <br />
-    <strong class="new">
-      {{productoPedido.producto.price | currency}}
-    </strong>
-    <strong class="new">
-      {{productoPedido.cantidad}}
-    </strong>
-  </p>
-    <p class="p-2">
-      <span class="col">
-        Cant.: {{productoPedido.cantidad}}
-      </span>
-      <span class="col btn-controls">
-        <button class="btn-circle plus" (click)="addCart()">+</button>
-        <button class="btn-circle minus" (click)="removeCart()">-</button>
-      </span>
-    </p>
-  <p class="p-2 text-right">
+      <p class="eq-p text-truncate small prices">
+        <span class="small old">
+          {{productoPedido.producto.reducedPrice | currency}}
+        </span>
+        <!-- <br /> -->
+        <strong class="new">
+          {{productoPedido.producto.price | currency}}
+        </strong>
+      </p>
+      <p class="px-2">
+        <span class="col">
+          Cant.: {{productoPedido.cantidad}}
+        </span>
+        <span class="col btn-controls" *ngIf="buttons">
+          <button class="btn-circle plus" (click)="addCart()">+</button>
+          <button class="btn-circle minus" (click)="removeCart()">-</button>
+        </span>
+      </p>
+    <!-- <p class="px-2 text-right">
+      <button class="btn btn-sm btn-primary">Detalle</button>
+    </p> -->
 
-    <button class="btn btn-sm btn-primary">Detalle</button>
-  </p>
-  <!-- <button class="addCart"><i class="icon ico-cart"></i></button> -->
+    </div>
+  </div>
 </div>

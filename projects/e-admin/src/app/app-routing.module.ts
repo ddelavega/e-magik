@@ -27,13 +27,7 @@ const routes: Routes = [
     path: 'backend', loadChildren: () => import('./backend/backend.module').then(m => m.BackendModule),
     canActivate: [AuthGuard],
   },
-  // {
-  //   path: 'products',
-  //   loadChildren: () => import('./products/products.module').then(m => m.ProductsModule),
-  //   canActivate: [AuthGuard],
-  //   data: { roles: [RoleBo.Admin] }
-  // },
-  // otherwise redirect to home
+
   { path: '**', redirectTo: '' }
 ];
 

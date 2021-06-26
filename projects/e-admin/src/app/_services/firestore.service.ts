@@ -58,6 +58,12 @@ export class FirestoreService {
     const collection = this.database.collection<T>(path);
     return collection.valueChanges();
   }
+  getCollectionQuery<T>(path: string, parametro: string, condicion: any, busqueda: string) {
+
+    const collection = this.database.collection<T>(path, ref => ref.where(parametro, condicion, busqueda));
+
+    return collection.valueChanges();
+  }
 
   // private openStatus = new BehaviorSubject<boolean>(true);
   // currentOSt = this.openStatus.asObservable();

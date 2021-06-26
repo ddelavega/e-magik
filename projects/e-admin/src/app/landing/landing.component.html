@@ -10,10 +10,68 @@
 
   </div>
 </div> -->
-LANDING
-<div class="row">
-    <div *ngFor="let producto of productos" class="prd-card col col-md-6 col-lg-4 col-xl-3 py-3 mx-auto">
-      <app-producto [producto]="producto"></app-producto>
+<!-- <div class="jumbo mb-4">
 
+  <div class="p-5 rounded-3">
+    <div class="container-fluid py-5">
+      <h1 class="display-5 fw-bold">e-Shop</h1>
+      <p class="col-md-8 fs-4">Soluciones.</p>
+      <button class="btn btn-primary btn-lg" type="button">Comenzar</button>
     </div>
   </div>
+</div> -->
+      <div class="main-wrapper">
+          <div class="container-header">
+            <div class="row px-2">
+              <div class="col px-0">
+                <h1 class="navbar-marca dlv-logo px-0">
+                  <a class="">
+                    <strong>e-shop</strong>
+                  </a>
+                </h1>
+              </div>
+              <div class="col-3 px-0">
+
+              </div>
+              <div class="col p-0 menu-right">
+                <div class=" ml-3">
+                  <a>
+                    <!-- <span class="icon ico-circle-fill"></span> -->
+                    <span class="icon-standard" routerLinkActive="active" routerLink="login">
+                      <i class="icon ico-user"></i>
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        <div class="container-main px-1">
+          <div class="jumbo mb-4">
+
+<div class="p-5 rounded-3">
+  <div class="container-fluid py-5">
+    <h1 class="display-5 fw-bold">e-Shop</h1>
+    <p class="col-md-8 fs-4">Bienvenido a lo que querés!</p>
+    <a routerLink="login" class="btn btn-primary btn-lg" type="button">Registrarme</a>
+  </div>
+</div>
+</div>
+          <div class="container-fluid">
+            <h2>Productos</h2>
+            <div class="row">
+                <div *ngFor="let producto of productos" class="prd-card col col-md-6 col-lg-4 col-xl-3 py-3 mx-auto">
+                  <app-producto [producto]="producto"></app-producto>
+
+                </div>
+              </div>
+          </div>
+          <!-- <div class="bg-dark small text-center text-light foot-legend">
+            <p><i class="icon ico-ap-logo"></i> {{title}} | vers: {{vers}} |
+              Hecho con <i class="icon ico-brain-side"></i> con Angular
+              {{ngVersion.full}}
+            </p>
+          </div> -->
+        </div>
+      </div>
+
+

@@ -26,10 +26,10 @@
                 </strong>
               </p> -->
               <ul>
-                <li><a class="nav-item nav-link" routerLinkActive="active" routerLink="/"
+                <!-- <li><a class="nav-item nav-link" routerLinkActive="active" routerLink="/"
                     [routerLinkActiveOptions]="{ exact: true }" (click)="isMobile && closeMenu()">
                     <i class="icon ico-chart-bars"></i> Dashboard</a>
-                </li>
+                </li> -->
                 <!-- <li><a class="nav-item nav-link" routerLinkActive="active" routerLink="/backend/administrador"
                     (click)="isMobile && closeMenu()">
                     Administrador
@@ -49,6 +49,8 @@
                         (click)="isMobile && closeMenu()"><i class="icon ico-cart"></i> Carro de Compras</a></li>
                 <li><a class="nav-item nav-link" routerLinkActive="active" routerLink="/backend/set-productos"
                       (click)="isMobile && closeMenu()"><i class="icon ico-dolly"></i> Configuración de Productos</a></li>
+                <li><a class="nav-item nav-link" routerLinkActive="active" routerLink="/backend/historial-pedidos"
+                      (click)="isMobile && closeMenu()"><i class="icon ico-clock"></i> Historial Pedidos</a></li>
                 <li>
                   <a class="nav-item nav-link" routerLinkActive="active" routerLink="login" (click)="logout()"
                     (click)="isMobile && closeMenu()">Logout</a>
@@ -138,6 +140,7 @@
     </ng-sidebar-container>
   </ng-container>
   <ng-template #login>
+
     <router-outlet></router-outlet>
   </ng-template>
 </div>

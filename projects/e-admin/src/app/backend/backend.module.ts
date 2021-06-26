@@ -5,18 +5,22 @@ import { BackendComponent } from './backend.component';
 import { BackendRoutingModule } from './backend-routing.module';
 import { SetProductosComponent } from './set-productos/set-productos.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { OrderHistoryComponent } from './order-history/order-history.component';
+import { ComponentesModule } from '../componentes/componentes.module';
 
 
 @NgModule({
   declarations: [
     BackendComponent,
-    SetProductosComponent
+    SetProductosComponent,
+    OrderHistoryComponent
   ],
   imports: [
     CommonModule,
     BackendRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ComponentesModule
   ]
 })
 export class BackendModule { }

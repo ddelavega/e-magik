@@ -33,7 +33,7 @@ export interface Pedido {
   productos?: ProductoPedido[];
   precioTotal: number;
   estado: EstadoPedido;
-  fecha: Date;
+  fecha: any;
   valoracion: number;
 }
 
